@@ -1,0 +1,4 @@
+all:
+
+syntax-check:
+	clang++ -fsyntax-only sha1.cpp

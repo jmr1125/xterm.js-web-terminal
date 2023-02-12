@@ -6,11 +6,10 @@
   <body>
     <div id="terminal" ref="terminal"></div>
     <div><br></div>
-    <a href="javascript:WebSocketTest()">run WebSocket</a>
     
     <script>
       const term=new Terminal();
-      const ws=new WebSocket("ws://localhost:8001/echo");;
+      const ws=new WebSocket("ws://127.0.0.1:8001/echo");;
       function prompt(){term.write("\x1b[0m$ ");}
       term.open(document.getElementById('terminal'));
       term.writeln("\x1b[1;32mWelcome To Web-Terminal\x1b[0m\r\n");
@@ -26,54 +25,16 @@
 		  term.write('\b \b')
 	      }
 	  } else if (printable) {
-	      term.write(e.key)
-	      ws.send(e.key);
+	      term.write(e.key);
+	      ws.send("press: "+e.key);
 	  }
 	  console.log(1,'print', e.key)
       })
       ws.onmessage=function(e){
-	  term.writeln(e);
+	  term.write(e);
       }
       ws.onclose=function(e){
-	  term.writeln("\x1b[31mterminal stop...\x1b[0m");
-      }
-    </script>
-    <script type="text/javascript">
-      function WebSocketTest()
-      {
-          if ("WebSocket" in window)
-          {
-              alert("supported WebSocket!");
-
-              // 打开一个 web socket
-              var ws = new WebSocket("ws://localhost:8001/echo");
-
-              ws.onopen = function()
-              {
-                  // Web Socket 已连接上，使用 send() 方法发送数据
-                  ws.send("data");
-                  alert("sending...");
-              };
-
-              ws.onmessage = function (evt)
-              {
-                  var received_msg = evt.data;
-                  alert("received...");
-		  alert(received_msg);
-              };
-
-              ws.onclose = function()
-              {
-                  // 关闭 websocket
-                  alert("closed...");
-              };
-          }
-
-          else
-          {
-              // 浏览器不支持 WebSocket
-              alert("NOT supported WebSocket!");
-          }
+	  term.writeln("\n\x1b[31mterminal stop...\x1b[0m");
       }
     </script>
   </body>
