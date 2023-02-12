@@ -28,7 +28,6 @@
 # OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
-_GOODBYE_MESSAGE = u'Goodbye'
 
 
 def web_socket_do_extra_handshake(request):
@@ -37,20 +36,38 @@ def web_socket_do_extra_handshake(request):
 
     pass  # Always accept.
 
+import pty
+import os
+import fcntl
+transf_d_init=False
+pid=-1
+fd=-1
 
 def web_socket_transfer_data(request):
+    if transf_d_init == False:
+        print("init bash")
+        pid,fd=pty.fork()
+        if pid == 0 :
+            os.execlp("bash","bash")
+    '''if os.fork() == 0 :
+        try:
+            res=os.read(fd,1000)
+            request.ws_stream.send_message(res,binary=False)
+            #except BlockingIOError:
+        except BaseException:
+            print("not available")'''
     while True:
         line = request.ws_stream.receive_message()
         if line is None:
             return
-        if isinstance(line, unicode):
-            request.ws_stream.send_message(line, binary=False)
-            print(line)
-            if line == _GOODBYE_MESSAGE:
-                return
-        else:
-            print(line);
-            request.ws_stream.send_message(line, binary=True)
+        print (line)
+        os.write(fd,line)
+        try:
+            res=os.read(fd,1000)
+            request.ws_stream.send_message(res,binary=False)
+            #except BlockingIOError:
+        except BaseException:
+            print("not available")
 
 
 # vi:sts=4 sw=4 et

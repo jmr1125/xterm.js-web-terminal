@@ -9,32 +9,20 @@
     
     <script>
       const term=new Terminal();
-      const ws=new WebSocket("ws://127.0.0.1:8001/echo");;
-      function prompt(){term.write("\x1b[0m$ ");}
+      const ws=new WebSocket("ws://127.0.0.1:9000/echo");
       term.open(document.getElementById('terminal'));
       term.writeln("\x1b[1;32mWelcome To Web-Terminal\x1b[0m\r\n");
-      prompt();
 
       term.onKey(e => {
-	  const printable = !e.domEvent.altKey && !e.domEvent.altGraphKey && !e.domEvent.ctrlKey && !e.domEvent.metaKey
-	  if (e.domEvent.keyCode === 13) {
-	      term.writeln("\x1b[0m");
-	      prompt();
-	  } else if (e.domEvent.keyCode === 8) { // back 删除的情况
-	      if (term._core.buffer.x > 2) {
-		  term.write('\b \b')
-	      }
-	  } else if (printable) {
-	      term.write(e.key);
-	      ws.send("press: "+e.key);
-	  }
+	  ws.send(e.key)
 	  console.log(1,'print', e.key)
       })
       ws.onmessage=function(e){
-	  term.write(e);
+	  //alert("onmessage")
+	  term.write(e.data);
       }
       ws.onclose=function(e){
-	  term.writeln("\n\x1b[31mterminal stop...\x1b[0m");
+	  term.writeln("\r\n\x1b[31mterminal stop...\x1b[0m");
       }
     </script>
   </body>
