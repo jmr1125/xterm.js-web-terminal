@@ -1,0 +1,309 @@
+The system is: CYGWIN - 3.4.6-1.x86_64 - x86_64
+Compiling the C compiler identification source file "CMakeCCompilerId.c" succeeded.
+Compiler: /usr/bin/clang 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the C compiler identification source "CMakeCCompilerId.c" produced "a.exe"
+
+The C compiler identification is Clang, found in "/cygdrive/L/xterm.js/build/CMakeFiles/3.23.2/CompilerIdC/a.exe"
+
+Compiling the CXX compiler identification source file "CMakeCXXCompilerId.cpp" succeeded.
+Compiler: /usr/bin/clang++ 
+Build flags: 
+Id flags:  
+
+The output was:
+0
+
+
+Compilation of the CXX compiler identification source "CMakeCXXCompilerId.cpp" produced "a.exe"
+
+The CXX compiler identification is Clang, found in "/cygdrive/L/xterm.js/build/CMakeFiles/3.23.2/CompilerIdCXX/a.exe"
+
+Detecting C compiler ABI info compiled with the following output:
+Change Dir: /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja.exe cmTC_dc829 && [1/2] Building C object CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o
+clang version 8.0.1 (tags/RELEASE_801/final)
+Target: x86_64-unknown-windows-cygnus
+Thread model: posix
+InstalledDir: /usr/bin
+ "/usr/bin/clang-8" -cc1 -triple x86_64-unknown-windows-cygnus -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -fmath-errno -masm-verbose -mconstructor-aliases -munwind-tables -target-cpu x86-64 -dwarf-column-info -debugger-tuning=gdb -momit-leaf-frame-pointer -v -coverage-notes-file /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.gcno -resource-dir /usr/lib/clang/8.0.1 -dependency-file CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o.d -sys-header-deps -MT CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o -internal-isystem /usr/lib/clang/8.0.1/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/clang/8.0.1/include -internal-isystem /usr/x86_64-pc-cygwin/include -internal-isystem /usr/include -internal-isystem /usr/include/w32api -fdebug-compilation-dir /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fobjc-runtime=gcc -fseh-exceptions -fdiagnostics-show-option -o CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.23.2/Modules/CMakeCCompilerABI.c -faddrsig
+clang -cc1 version 8.0.1 based upon LLVM 8.0.1 default target x86_64-unknown-cygwin
+ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include"
+ignoring duplicate directory "/usr/lib/clang/8.0.1/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/clang/8.0.1/include
+ /usr/local/include
+ /usr/include
+ /usr/include/w32api
+End of search list.
+[2/2] Linking C executable cmTC_dc829.exe
+clang version 8.0.1 (tags/RELEASE_801/final)
+Target: x86_64-unknown-windows-cygnus
+Thread model: posix
+InstalledDir: /usr/bin
+ "/usr/bin/ld" -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPv --wrap _ZdaPv --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvKSt9nothrow_t -Bdynamic --tsaware -o cmTC_dc829.exe /usr/lib/crt0.o /usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o -L/usr/lib/gcc/x86_64-pc-cygwin/11 -L/usr/x86_64-pc-cygwin/lib -L/usr/lib -L/usr/lib/w32api --enable-auto-import CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_dc829.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lcygwin -ladvapi32 -lshell32 -luser32 -lkernel32 /usr/lib/default-manifest.o /usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o
+
+
+
+Parsed C implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/clang/8.0.1/include]
+    add: [/usr/local/include]
+    add: [/usr/include]
+    add: [/usr/include/w32api]
+  end of search list found
+  collapse include dir [/usr/lib/clang/8.0.1/include] ==> [/usr/lib/clang/8.0.1/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  collapse include dir [/usr/include/w32api] ==> [/usr/include/w32api]
+  implicit include dirs: [/usr/lib/clang/8.0.1/include;/usr/local/include;/usr/include;/usr/include/w32api]
+
+
+Parsed C implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/ninja.exe cmTC_dc829 && [1/2] Building C object CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o]
+  ignore line: [clang version 8.0.1 (tags/RELEASE_801/final)]
+  ignore line: [Target: x86_64-unknown-windows-cygnus]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [ "/usr/bin/clang-8" -cc1 -triple x86_64-unknown-windows-cygnus -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCCompilerABI.c -mrelocation-model pic -pic-level 2 -mthread-model posix -fmath-errno -masm-verbose -mconstructor-aliases -munwind-tables -target-cpu x86-64 -dwarf-column-info -debugger-tuning=gdb -momit-leaf-frame-pointer -v -coverage-notes-file /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.gcno -resource-dir /usr/lib/clang/8.0.1 -dependency-file CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o.d -sys-header-deps -MT CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o -internal-isystem /usr/lib/clang/8.0.1/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/clang/8.0.1/include -internal-isystem /usr/x86_64-pc-cygwin/include -internal-isystem /usr/include -internal-isystem /usr/include/w32api -fdebug-compilation-dir /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fobjc-runtime=gcc -fseh-exceptions -fdiagnostics-show-option -o CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o -x c /usr/share/cmake-3.23.2/Modules/CMakeCCompilerABI.c -faddrsig]
+  ignore line: [clang -cc1 version 8.0.1 based upon LLVM 8.0.1 default target x86_64-unknown-cygwin]
+  ignore line: [ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include"]
+  ignore line: [ignoring duplicate directory "/usr/lib/clang/8.0.1/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/clang/8.0.1/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include]
+  ignore line: [ /usr/include/w32api]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking C executable cmTC_dc829.exe]
+  ignore line: [clang version 8.0.1 (tags/RELEASE_801/final)]
+  ignore line: [Target: x86_64-unknown-windows-cygnus]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  link line: [ "/usr/bin/ld" -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPv --wrap _ZdaPv --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvKSt9nothrow_t -Bdynamic --tsaware -o cmTC_dc829.exe /usr/lib/crt0.o /usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o -L/usr/lib/gcc/x86_64-pc-cygwin/11 -L/usr/x86_64-pc-cygwin/lib -L/usr/lib -L/usr/lib/w32api --enable-auto-import CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o --out-implib libcmTC_dc829.dll.a --major-image-version 0 --minor-image-version 0 -lgcc_s -lgcc -lcygwin -ladvapi32 -lshell32 -luser32 -lkernel32 /usr/lib/default-manifest.o /usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-m] ==> ignore
+    arg [i386pep] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_Znwm] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_Znam] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZnwmRKSt9nothrow_t] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZnamRKSt9nothrow_t] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZdlPv] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZdaPv] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZdlPvRKSt9nothrow_t] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZdaPvKSt9nothrow_t] ==> ignore
+    arg [-Bdynamic] ==> search dynamic
+    arg [--tsaware] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_dc829.exe] ==> ignore
+    arg [/usr/lib/crt0.o] ==> obj [/usr/lib/crt0.o]
+    arg [/usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o] ==> obj [/usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o]
+    arg [-L/usr/lib/gcc/x86_64-pc-cygwin/11] ==> dir [/usr/lib/gcc/x86_64-pc-cygwin/11]
+    arg [-L/usr/x86_64-pc-cygwin/lib] ==> dir [/usr/x86_64-pc-cygwin/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [-L/usr/lib/w32api] ==> dir [/usr/lib/w32api]
+    arg [--enable-auto-import] ==> ignore
+    arg [CMakeFiles/cmTC_dc829.dir/CMakeCCompilerABI.c.o] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_dc829.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lcygwin] ==> lib [cygwin]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [/usr/lib/default-manifest.o] ==> obj [/usr/lib/default-manifest.o]
+    arg [/usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o] ==> obj [/usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-cygwin/11] ==> [/usr/lib/gcc/x86_64-pc-cygwin/11]
+  collapse library dir [/usr/x86_64-pc-cygwin/lib] ==> [/usr/x86_64-pc-cygwin/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/w32api] ==> [/usr/lib/w32api]
+  implicit libs: [gcc_s;gcc;cygwin;advapi32;shell32;user32;kernel32]
+  implicit objs: [/usr/lib/crt0.o;/usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o;/usr/lib/default-manifest.o;/usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-pc-cygwin/11;/usr/x86_64-pc-cygwin/lib;/usr/lib;/usr/lib/w32api]
+  implicit fwks: []
+
+
+Detecting CXX compiler ABI info compiled with the following output:
+Change Dir: /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp
+
+Run Build Command(s):/usr/bin/ninja.exe cmTC_ee0bc && [1/2] Building CXX object CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o
+clang version 8.0.1 (tags/RELEASE_801/final)
+Target: x86_64-unknown-windows-cygnus
+Thread model: posix
+InstalledDir: /usr/bin
+ "/usr/bin/clang-8" -cc1 -triple x86_64-unknown-windows-cygnus -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mthread-model posix -fmath-errno -masm-verbose -mconstructor-aliases -munwind-tables -target-cpu x86-64 -dwarf-column-info -debugger-tuning=gdb -momit-leaf-frame-pointer -v -coverage-notes-file /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /usr/lib/clang/8.0.1 -dependency-file CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o.d -sys-header-deps -MT CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o -internal-isystem /usr/x86_64-pc-cygwin/include/c++ -internal-isystem /usr/x86_64-pc-cygwin/include/c++/x86_64-pc-cygwin -internal-isystem /usr/x86_64-pc-cygwin/include/c++/backward -internal-isystem /usr/x86_64-pc-cygwin/include/c++/11 -internal-isystem /usr/x86_64-pc-cygwin/include/c++/11/x86_64-pc-cygwin -internal-isystem /usr/x86_64-pc-cygwin/include/c++/11/backward -internal-isystem /usr/include/c++/11 -internal-isystem /usr/include/c++/11/x86_64-pc-cygwin -internal-isystem /usr/include/c++/11/backward -internal-isystem /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++ -internal-isystem /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin -internal-isystem /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward -internal-isystem /usr/lib/clang/8.0.1/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/clang/8.0.1/include -internal-isystem /usr/x86_64-pc-cygwin/include -internal-isystem /usr/include -internal-isystem /usr/include/w32api -fdeprecated-macro -fdebug-compilation-dir /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fseh-exceptions -fdiagnostics-show-option -o CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.23.2/Modules/CMakeCXXCompilerABI.cpp -faddrsig
+clang -cc1 version 8.0.1 based upon LLVM 8.0.1 default target x86_64-unknown-cygwin
+ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++"
+ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/x86_64-pc-cygwin"
+ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/backward"
+ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/11"
+ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/11/x86_64-pc-cygwin"
+ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/11/backward"
+ignoring nonexistent directory "/usr/include/c++/11"
+ignoring nonexistent directory "/usr/include/c++/11/x86_64-pc-cygwin"
+ignoring nonexistent directory "/usr/include/c++/11/backward"
+ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include"
+ignoring duplicate directory "/usr/lib/clang/8.0.1/include"
+#include "..." search starts here:
+#include <...> search starts here:
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin
+ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward
+ /usr/lib/clang/8.0.1/include
+ /usr/local/include
+ /usr/include
+ /usr/include/w32api
+End of search list.
+[2/2] Linking CXX executable cmTC_ee0bc.exe
+clang version 8.0.1 (tags/RELEASE_801/final)
+Target: x86_64-unknown-windows-cygnus
+Thread model: posix
+InstalledDir: /usr/bin
+ "/usr/bin/ld" -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPv --wrap _ZdaPv --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvKSt9nothrow_t -Bdynamic --tsaware -o cmTC_ee0bc.exe /usr/lib/crt0.o /usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o -L/usr/lib/gcc/x86_64-pc-cygwin/11 -L/usr/x86_64-pc-cygwin/lib -L/usr/lib -L/usr/lib/w32api --enable-auto-import CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_ee0bc.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -liconv -lgcc_s -lgcc -lcygwin -ladvapi32 -lshell32 -luser32 -lkernel32 /usr/lib/default-manifest.o /usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o
+
+
+
+Parsed CXX implicit include dir info from above output: rv=done
+  found start of include info
+  found start of implicit include info
+    add: [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++]
+    add: [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin]
+    add: [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward]
+    add: [/usr/lib/clang/8.0.1/include]
+    add: [/usr/local/include]
+    add: [/usr/include]
+    add: [/usr/include/w32api]
+  end of search list found
+  collapse include dir [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++] ==> [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin] ==> [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin]
+  collapse include dir [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward] ==> [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward]
+  collapse include dir [/usr/lib/clang/8.0.1/include] ==> [/usr/lib/clang/8.0.1/include]
+  collapse include dir [/usr/local/include] ==> [/usr/local/include]
+  collapse include dir [/usr/include] ==> [/usr/include]
+  collapse include dir [/usr/include/w32api] ==> [/usr/include/w32api]
+  implicit include dirs: [/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++;/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin;/usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward;/usr/lib/clang/8.0.1/include;/usr/local/include;/usr/include;/usr/include/w32api]
+
+
+Parsed CXX implicit link information from above output:
+  link line regex: [^( *|.*[/\])(ld\.exe|CMAKE_LINK_STARTFILE-NOTFOUND|([^/\]+-)?ld|collect2)[^/\]*( |$)]
+  ignore line: [Change Dir: /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp]
+  ignore line: []
+  ignore line: [Run Build Command(s):/usr/bin/ninja.exe cmTC_ee0bc && [1/2] Building CXX object CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o]
+  ignore line: [clang version 8.0.1 (tags/RELEASE_801/final)]
+  ignore line: [Target: x86_64-unknown-windows-cygnus]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  ignore line: [ "/usr/bin/clang-8" -cc1 -triple x86_64-unknown-windows-cygnus -emit-obj -mrelax-all -disable-free -disable-llvm-verifier -discard-value-names -main-file-name CMakeCXXCompilerABI.cpp -mrelocation-model pic -pic-level 2 -mthread-model posix -fmath-errno -masm-verbose -mconstructor-aliases -munwind-tables -target-cpu x86-64 -dwarf-column-info -debugger-tuning=gdb -momit-leaf-frame-pointer -v -coverage-notes-file /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp/CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.gcno -resource-dir /usr/lib/clang/8.0.1 -dependency-file CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o.d -sys-header-deps -MT CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o -internal-isystem /usr/x86_64-pc-cygwin/include/c++ -internal-isystem /usr/x86_64-pc-cygwin/include/c++/x86_64-pc-cygwin -internal-isystem /usr/x86_64-pc-cygwin/include/c++/backward -internal-isystem /usr/x86_64-pc-cygwin/include/c++/11 -internal-isystem /usr/x86_64-pc-cygwin/include/c++/11/x86_64-pc-cygwin -internal-isystem /usr/x86_64-pc-cygwin/include/c++/11/backward -internal-isystem /usr/include/c++/11 -internal-isystem /usr/include/c++/11/x86_64-pc-cygwin -internal-isystem /usr/include/c++/11/backward -internal-isystem /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++ -internal-isystem /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin -internal-isystem /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward -internal-isystem /usr/lib/clang/8.0.1/include -internal-isystem /usr/local/include -internal-isystem /usr/lib/clang/8.0.1/include -internal-isystem /usr/x86_64-pc-cygwin/include -internal-isystem /usr/include -internal-isystem /usr/include/w32api -fdeprecated-macro -fdebug-compilation-dir /cygdrive/L/xterm.js/build/CMakeFiles/CMakeTmp -ferror-limit 19 -fmessage-length 0 -fobjc-runtime=gcc -fcxx-exceptions -fexceptions -fseh-exceptions -fdiagnostics-show-option -o CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o -x c++ /usr/share/cmake-3.23.2/Modules/CMakeCXXCompilerABI.cpp -faddrsig]
+  ignore line: [clang -cc1 version 8.0.1 based upon LLVM 8.0.1 default target x86_64-unknown-cygwin]
+  ignore line: [ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++"]
+  ignore line: [ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/x86_64-pc-cygwin"]
+  ignore line: [ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/backward"]
+  ignore line: [ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/11"]
+  ignore line: [ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/11/x86_64-pc-cygwin"]
+  ignore line: [ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include/c++/11/backward"]
+  ignore line: [ignoring nonexistent directory "/usr/include/c++/11"]
+  ignore line: [ignoring nonexistent directory "/usr/include/c++/11/x86_64-pc-cygwin"]
+  ignore line: [ignoring nonexistent directory "/usr/include/c++/11/backward"]
+  ignore line: [ignoring nonexistent directory "/usr/x86_64-pc-cygwin/include"]
+  ignore line: [ignoring duplicate directory "/usr/lib/clang/8.0.1/include"]
+  ignore line: [#include "..." search starts here:]
+  ignore line: [#include <...> search starts here:]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/x86_64-pc-cygwin]
+  ignore line: [ /usr/lib/gcc/x86_64-pc-cygwin/11/include/c++/backward]
+  ignore line: [ /usr/lib/clang/8.0.1/include]
+  ignore line: [ /usr/local/include]
+  ignore line: [ /usr/include]
+  ignore line: [ /usr/include/w32api]
+  ignore line: [End of search list.]
+  ignore line: [[2/2] Linking CXX executable cmTC_ee0bc.exe]
+  ignore line: [clang version 8.0.1 (tags/RELEASE_801/final)]
+  ignore line: [Target: x86_64-unknown-windows-cygnus]
+  ignore line: [Thread model: posix]
+  ignore line: [InstalledDir: /usr/bin]
+  link line: [ "/usr/bin/ld" -m i386pep --wrap _Znwm --wrap _Znam --wrap _ZnwmRKSt9nothrow_t --wrap _ZnamRKSt9nothrow_t --wrap _ZdlPv --wrap _ZdaPv --wrap _ZdlPvRKSt9nothrow_t --wrap _ZdaPvKSt9nothrow_t -Bdynamic --tsaware -o cmTC_ee0bc.exe /usr/lib/crt0.o /usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o -L/usr/lib/gcc/x86_64-pc-cygwin/11 -L/usr/x86_64-pc-cygwin/lib -L/usr/lib -L/usr/lib/w32api --enable-auto-import CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o --out-implib libcmTC_ee0bc.dll.a --major-image-version 0 --minor-image-version 0 -lstdc++ -liconv -lgcc_s -lgcc -lcygwin -ladvapi32 -lshell32 -luser32 -lkernel32 /usr/lib/default-manifest.o /usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o]
+    arg [/usr/bin/ld] ==> ignore
+    arg [-m] ==> ignore
+    arg [i386pep] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_Znwm] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_Znam] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZnwmRKSt9nothrow_t] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZnamRKSt9nothrow_t] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZdlPv] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZdaPv] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZdlPvRKSt9nothrow_t] ==> ignore
+    arg [--wrap] ==> ignore
+    arg [_ZdaPvKSt9nothrow_t] ==> ignore
+    arg [-Bdynamic] ==> search dynamic
+    arg [--tsaware] ==> ignore
+    arg [-o] ==> ignore
+    arg [cmTC_ee0bc.exe] ==> ignore
+    arg [/usr/lib/crt0.o] ==> obj [/usr/lib/crt0.o]
+    arg [/usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o] ==> obj [/usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o]
+    arg [-L/usr/lib/gcc/x86_64-pc-cygwin/11] ==> dir [/usr/lib/gcc/x86_64-pc-cygwin/11]
+    arg [-L/usr/x86_64-pc-cygwin/lib] ==> dir [/usr/x86_64-pc-cygwin/lib]
+    arg [-L/usr/lib] ==> dir [/usr/lib]
+    arg [-L/usr/lib/w32api] ==> dir [/usr/lib/w32api]
+    arg [--enable-auto-import] ==> ignore
+    arg [CMakeFiles/cmTC_ee0bc.dir/CMakeCXXCompilerABI.cpp.o] ==> ignore
+    arg [--out-implib] ==> ignore
+    arg [libcmTC_ee0bc.dll.a] ==> ignore
+    arg [--major-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [--minor-image-version] ==> ignore
+    arg [0] ==> ignore
+    arg [-lstdc++] ==> lib [stdc++]
+    arg [-liconv] ==> lib [iconv]
+    arg [-lgcc_s] ==> lib [gcc_s]
+    arg [-lgcc] ==> lib [gcc]
+    arg [-lcygwin] ==> lib [cygwin]
+    arg [-ladvapi32] ==> lib [advapi32]
+    arg [-lshell32] ==> lib [shell32]
+    arg [-luser32] ==> lib [user32]
+    arg [-lkernel32] ==> lib [kernel32]
+    arg [/usr/lib/default-manifest.o] ==> obj [/usr/lib/default-manifest.o]
+    arg [/usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o] ==> obj [/usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o]
+  collapse library dir [/usr/lib/gcc/x86_64-pc-cygwin/11] ==> [/usr/lib/gcc/x86_64-pc-cygwin/11]
+  collapse library dir [/usr/x86_64-pc-cygwin/lib] ==> [/usr/x86_64-pc-cygwin/lib]
+  collapse library dir [/usr/lib] ==> [/usr/lib]
+  collapse library dir [/usr/lib/w32api] ==> [/usr/lib/w32api]
+  implicit libs: [stdc++;iconv;gcc_s;gcc;cygwin;advapi32;shell32;user32;kernel32]
+  implicit objs: [/usr/lib/crt0.o;/usr/lib/gcc/x86_64-pc-cygwin/11/crtbegin.o;/usr/lib/default-manifest.o;/usr/lib/gcc/x86_64-pc-cygwin/11/crtend.o]
+  implicit dirs: [/usr/lib/gcc/x86_64-pc-cygwin/11;/usr/x86_64-pc-cygwin/lib;/usr/lib;/usr/lib/w32api]
+  implicit fwks: []
+
+

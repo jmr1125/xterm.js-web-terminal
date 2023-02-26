@@ -1,0 +1,3 @@
+/cygdrive/L/xterm.js/build/CMakeFiles/srv.dir
+/cygdrive/L/xterm.js/build/CMakeFiles/edit_cache.dir
+/cygdrive/L/xterm.js/build/CMakeFiles/rebuild_cache.dir

@@ -40,25 +40,36 @@ import pty
 import os
 import fcntl
 transf_d_init=False
+pid=-1
+fd=-1
 
 def read(fd,request):
     while True:
-        res=os.read(fd,1000)
-        request.ws_stream.send_message(res,binary=False)
+        try:
+            res=os.read(fd,1000)
+            request.ws_stream.send_message(res,binary=False)
+        #except BlockingIOError:
+        except BaseException:
+            print("not available")
 
 import threading
-
 def web_socket_transfer_data(request):
-    global transf_d_init
     if transf_d_init == False:
         transf_d_init=True
         print("init bash")
         pid,fd=pty.fork()
         if pid == 0 :
             os.execlp("bash","bash")
-        th=threading.Thread(target=read,args=(fd,request))
+        th=threading.Thread(Target=read,args=(fd,request))
         th.start()
-    #fcntl.fcntl(fd,fcntl.F_SETFL,os.O_NDELAY)
+    '''if os.fork() == 0 :
+        try:
+            res=os.read(fd,1000)
+            request.ws_stream.send_message(res,binary=False)
+            #except BlockingIOError:
+        except BaseException:
+            print("not available")'''
+    fcntl.fcntl(fd,fcntl.F_SETFL,os.O_NDELAY)
     while True:
         line = request.ws_stream.receive_message()
         if line is None:
