@@ -1,4 +1,6 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/test3.dir/base64.cpp.o"
+  "CMakeFiles/test3.dir/base64.cpp.o.d"
   "CMakeFiles/test3.dir/sha1.cpp.o"
   "CMakeFiles/test3.dir/sha1.cpp.o.d"
   "CMakeFiles/test3.dir/test3.cpp.o"

@@ -97,20 +97,68 @@ CMakeFiles/test2.dir/socket.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test2.dir/socket.cpp.s"
 	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiang/webterm/socket.cpp -o CMakeFiles/test2.dir/socket.cpp.s
 
+CMakeFiles/test2.dir/ws.cpp.o: CMakeFiles/test2.dir/flags.make
+CMakeFiles/test2.dir/ws.cpp.o: /Users/jiang/webterm/ws.cpp
+CMakeFiles/test2.dir/ws.cpp.o: CMakeFiles/test2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiang/webterm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/test2.dir/ws.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test2.dir/ws.cpp.o -MF CMakeFiles/test2.dir/ws.cpp.o.d -o CMakeFiles/test2.dir/ws.cpp.o -c /Users/jiang/webterm/ws.cpp
+
+CMakeFiles/test2.dir/ws.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test2.dir/ws.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiang/webterm/ws.cpp > CMakeFiles/test2.dir/ws.cpp.i
+
+CMakeFiles/test2.dir/ws.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test2.dir/ws.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiang/webterm/ws.cpp -o CMakeFiles/test2.dir/ws.cpp.s
+
+CMakeFiles/test2.dir/sha1.cpp.o: CMakeFiles/test2.dir/flags.make
+CMakeFiles/test2.dir/sha1.cpp.o: /Users/jiang/webterm/sha1.cpp
+CMakeFiles/test2.dir/sha1.cpp.o: CMakeFiles/test2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiang/webterm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/test2.dir/sha1.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test2.dir/sha1.cpp.o -MF CMakeFiles/test2.dir/sha1.cpp.o.d -o CMakeFiles/test2.dir/sha1.cpp.o -c /Users/jiang/webterm/sha1.cpp
+
+CMakeFiles/test2.dir/sha1.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test2.dir/sha1.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiang/webterm/sha1.cpp > CMakeFiles/test2.dir/sha1.cpp.i
+
+CMakeFiles/test2.dir/sha1.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test2.dir/sha1.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiang/webterm/sha1.cpp -o CMakeFiles/test2.dir/sha1.cpp.s
+
+CMakeFiles/test2.dir/base64.cpp.o: CMakeFiles/test2.dir/flags.make
+CMakeFiles/test2.dir/base64.cpp.o: /Users/jiang/webterm/base64.cpp
+CMakeFiles/test2.dir/base64.cpp.o: CMakeFiles/test2.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=/Users/jiang/webterm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/test2.dir/base64.cpp.o"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/test2.dir/base64.cpp.o -MF CMakeFiles/test2.dir/base64.cpp.o.d -o CMakeFiles/test2.dir/base64.cpp.o -c /Users/jiang/webterm/base64.cpp
+
+CMakeFiles/test2.dir/base64.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/test2.dir/base64.cpp.i"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E /Users/jiang/webterm/base64.cpp > CMakeFiles/test2.dir/base64.cpp.i
+
+CMakeFiles/test2.dir/base64.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/test2.dir/base64.cpp.s"
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/c++ $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S /Users/jiang/webterm/base64.cpp -o CMakeFiles/test2.dir/base64.cpp.s
+
 # Object files for target test2
 test2_OBJECTS = \
 "CMakeFiles/test2.dir/test2.cpp.o" \
-"CMakeFiles/test2.dir/socket.cpp.o"
+"CMakeFiles/test2.dir/socket.cpp.o" \
+"CMakeFiles/test2.dir/ws.cpp.o" \
+"CMakeFiles/test2.dir/sha1.cpp.o" \
+"CMakeFiles/test2.dir/base64.cpp.o"
 
 # External object files for target test2
 test2_EXTERNAL_OBJECTS =
 
 test2: CMakeFiles/test2.dir/test2.cpp.o
 test2: CMakeFiles/test2.dir/socket.cpp.o
+test2: CMakeFiles/test2.dir/ws.cpp.o
+test2: CMakeFiles/test2.dir/sha1.cpp.o
+test2: CMakeFiles/test2.dir/base64.cpp.o
 test2: CMakeFiles/test2.dir/build.make
 test2: /opt/homebrew/lib/libuv.dylib
 test2: CMakeFiles/test2.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiang/webterm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Linking CXX executable test2"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=/Users/jiang/webterm/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable test2"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles/test2.dir/link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

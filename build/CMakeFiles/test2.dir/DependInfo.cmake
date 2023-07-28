@@ -8,8 +8,11 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/jiang/webterm/base64.cpp" "CMakeFiles/test2.dir/base64.cpp.o" "gcc" "CMakeFiles/test2.dir/base64.cpp.o.d"
+  "/Users/jiang/webterm/sha1.cpp" "CMakeFiles/test2.dir/sha1.cpp.o" "gcc" "CMakeFiles/test2.dir/sha1.cpp.o.d"
   "/Users/jiang/webterm/socket.cpp" "CMakeFiles/test2.dir/socket.cpp.o" "gcc" "CMakeFiles/test2.dir/socket.cpp.o.d"
   "/Users/jiang/webterm/test2.cpp" "CMakeFiles/test2.dir/test2.cpp.o" "gcc" "CMakeFiles/test2.dir/test2.cpp.o.d"
+  "/Users/jiang/webterm/ws.cpp" "CMakeFiles/test2.dir/ws.cpp.o" "gcc" "CMakeFiles/test2.dir/ws.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

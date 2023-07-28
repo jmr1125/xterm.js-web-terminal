@@ -58,7 +58,7 @@ int ft(int t) { // ft(B,C,D)函数
   else
     return B ^ C ^ D;
 }
-int Kt(int t) { // 常量K
+int K(int t) { // 常量K
   if (t < 20)
     return 0x5a827999;
   else if (t < 40)
@@ -78,15 +78,15 @@ void sha1(string text) {
   printX();
   for (int i = 0; i < Turn; i++) {
     setW(X, i);
-    for (int i = 0; i < 80; ++i) {
-      if (i % 16 == 0) {
-        cout << endl;
-      }
-      cout << hex << W[i] << ' ';
-    }
+    // for (int i = 0; i < 80; ++i) {
+    //   if (i % 16 == 0) {
+    //     cout << endl;
+    //   }
+    //   cout << hex << W[i] << ' ';
+    // }
     cout << endl;
     for (int t = 0; t < 80; t++) {
-      int temp = E + ft(t) + S(A, 5) + W[t] + Kt(t);
+      int temp = E + ft(t) + S(A, 5) + W[t] + K(t);
       E = D;
       D = C;
       C = S(B, 30);
@@ -98,8 +98,10 @@ void sha1(string text) {
     C1 = C = C + C1;
     D1 = D = D + D1;
     E1 = E = E + E1;
+    cout << hex << A1 << ' ' << B1 << ' ' << C1 << ' ' << D1 << ' ' << E1
+         << endl;
   }
-  printf("%08x%08x%08x%08x%08x\n\n", A1, B1, C1, D1, E1);
+  printf("Result: %08x%08x%08x%08x%08x\n\n", A1, B1, C1, D1, E1);
 }
 
 int main() {

@@ -1,7 +1,7 @@
+#include "base64.h"
 #include "sha1.h"
 #include <ios>
 #include <iostream>
-#include <sys/stat.h>
 using namespace std;
 ostream &operator<<(ostream &ost, vector<bool> x) {
   ost << "[";
@@ -62,7 +62,19 @@ int main() {
   //      << to_big(to_big(abcde[2]) + to_big(Initabcde[2])) << ' '
   //      << to_big(to_big(abcde[3]) + to_big(Initabcde[3])) << ' '
   //      << to_big(to_big(abcde[4]) + to_big(Initabcde[4])) << endl;
-  cout << hex << abcde[0] + Initabcde[0] << ' ' << abcde[1] + Initabcde[1]
-       << ' ' << abcde[2] + Initabcde[2] << ' ' << abcde[3] + Initabcde[3]
-       << ' ' << abcde[4] + Initabcde[4] << ' ';
+  cout << "sha1: " << hex << abcde[0] << ' ' << abcde[1] << ' ' << abcde[2]
+       << ' ' << abcde[3] << ' ' << abcde[4] << endl;
+  string base64 = encode(input);
+  cout << "base64: " << base64 << endl;
+  cout << "HELLO = " << decode(base64) << endl;
+  cout << "0x12345678 = " << to_vector(0x12345678) << endl;
+  cout << "HELLO = " << to_vector("HELLO") << endl;
+  cout << "Ma:" << endl;
+  cout << to_vector("Ma") << endl;
+  cout << encode(to_vector("Ma")) << endl;
+  cout << decode(encode(to_vector("Ma"))) << endl;
+  cout << "mmm:" << endl;
+  cout << to_vector("mmm") << endl;
+  cout << encode(to_vector("mmm")) << endl;
+  cout << decode(encode(to_vector("mmm"))) << endl;
 }

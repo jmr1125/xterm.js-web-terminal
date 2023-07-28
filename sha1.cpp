@@ -1,4 +1,8 @@
 #include "sha1.h"
+// #include <iomanip>
+// #include <iostream>
+#include <ostream>
+// using namespace std;
 bool isbigendian() {
   static bool first = true;
   static bool isbig = false;
@@ -55,7 +59,9 @@ vector<bool> pad(vector<bool> s) {
   for (int i = 0; i < 64 / 8; ++i) {
     // s.push_back(to_big(size) & ((QWORD)1 << i));
     QWORD tmp = to_big(size);
-    tmp = ((tmp & (0xff << (8 * i))) >> (8 * i));
+    // cout << hex << tmp << endl;
+    // cout << hex << setw(16) << ((QWORD)0xff << (8 * i)) << endl;
+    tmp = ((tmp & ((QWORD)0xff << (8 * i))) >> (8 * i));
     s.push_back(tmp & 0x80);
     s.push_back(tmp & 0x40);
     s.push_back(tmp & 0x20);
@@ -96,15 +102,35 @@ vector<DWORD> blocksGetw(vector<bool> s) {
   }
   return w;
 }
-#define loop(tmp1, tmp2)                                                       \
-  DWORD temp = tmp1;                                                           \
-  DWORD temp2 = tmp2;                                                          \
-  e = d;                                                                       \
-  d = c;                                                                       \
-  c = to_big((to_big(b) << 30) | (to_big(b) >> 2));                            \
-  b = a;                                                                       \
-  a = temp + temp2 + e + w.at(i);
-// a = to_big(to_big(temp) + to_big(temp2) + to_big(e) + to_big(w.at(i)));
+int F(int i, vector<DWORD> abcde) {
+  DWORD a = abcde[0];
+  DWORD b = abcde[1];
+  DWORD c = abcde[2];
+  DWORD d = abcde[3];
+  DWORD e = abcde[4];
+  if (i < 20) {
+    return (b & c) | ((~b) & d);
+  } else if (i < 40) {
+    return b ^ c ^ d;
+  } else if (i < 60) {
+    return (b & c) | (b & d) | (c & d);
+  } else {
+    assert(i < 80);
+    return b ^ c ^ d;
+  }
+}
+DWORD K(int i) {
+  if (i < 20) {
+    return 0x5a827999;
+  } else if (i < 40) {
+    return 0x6ed9eba1;
+  } else if (i < 60) {
+    return 0x8f1bbcdc;
+  } else {
+    assert(i < 80);
+    return 0xca62c1d6;
+  }
+}
 vector<DWORD> loop80(vector<DWORD> w, vector<DWORD> abcde) {
   assert(abcde.size() == 5);
   DWORD a = abcde[0];
@@ -112,28 +138,46 @@ vector<DWORD> loop80(vector<DWORD> w, vector<DWORD> abcde) {
   DWORD c = abcde[2];
   DWORD d = abcde[3];
   DWORD e = abcde[4];
-  for (int i = 0; i < 20; ++i) {
-    // loop(to_big(to_big((b & c) | ((~b) & d)) + to_big((DWORD)0x5a827999)),
-    //      to_big((to_big(a) << 5) | (to_big(a) >> 27)));
-    loop(((b & c) | ((~b) & d)) + (DWORD)0x5a827999, (a << 5) | (a >> 27));
+  for (int i = 0; i < 80; ++i) {
+    int tmp =
+        e + F(i, {a, b, c, d, e}) + ((a << 5) | (a >> 27)) + w.at(i) + K(i);
+    e = d;
+    d = c;
+    c = ((b << 30) | (b >> 2));
+    b = a;
+    a = tmp;
   }
-  for (int i = 20; i < 40; ++i) {
-    // loop(to_big(to_big(b ^ c ^ d) + to_big((DWORD)0x6ed9eba1)),
-    //      to_big((to_big(a) << 5) | (to_big(a) >> 27)));
-    loop((b ^ c ^ d) + (DWORD)0x6ed9eba1, (a << 5) | (a >> 27));
+  return {a + abcde[0], b + abcde[1], c + abcde[2], d + abcde[3], e + abcde[4]};
+}
+vector<bool> to_vector(string s) {
+  vector<bool> res;
+  for (char c : s) {
+    res.push_back(c & 0x80);
+    res.push_back(c & 0x40);
+    res.push_back(c & 0x20);
+    res.push_back(c & 0x10);
+    res.push_back(c & 0x08);
+    res.push_back(c & 0x04);
+    res.push_back(c & 0x02);
+    res.push_back(c & 0x01);
   }
-  for (int i = 40; i < 60; ++i) {
-    // loop(
-    //     to_big(to_big((b & c) | (b & d) | (c & d)) +
-    //     to_big((DWORD)0x8f1bbcdc)), to_big(to_big(a << 5) | to_big(a >>
-    //     27)));
-    loop(((b & c) | (b & d) | (c & d)) + (DWORD)0x8f1bbcdc,
-         (a << 5) | (a >> 27));
-  }
-  for (int i = 60; i < 80; ++i) {
-    // loop(to_big(to_big(b ^ c ^ d) + to_big((DWORD)0xca62c1d6)),
-    //      to_big((to_big(a) << 5) | (to_big(a) >> 27)));
-    loop((b ^ c ^ d) + (DWORD)0xca62c1d6, (a << 5) | (a >> 27));
-  }
-  return {a, b, c, d, e};
+  return res;
+}
+vector<bool> to_vector(DWORD x) {
+  return {static_cast<bool>(x & 0x80000000), static_cast<bool>(x & 0x40000000),
+          static_cast<bool>(x & 0x20000000), static_cast<bool>(x & 0x10000000),
+          static_cast<bool>(x & 0x08000000), static_cast<bool>(x & 0x04000000),
+          static_cast<bool>(x & 0x02000000), static_cast<bool>(x & 0x01000000),
+          static_cast<bool>(x & 0x00800000), static_cast<bool>(x & 0x00400000),
+          static_cast<bool>(x & 0x00200000), static_cast<bool>(x & 0x00100000),
+          static_cast<bool>(x & 0x00080000), static_cast<bool>(x & 0x00040000),
+          static_cast<bool>(x & 0x00020000), static_cast<bool>(x & 0x00010000),
+          static_cast<bool>(x & 0x00008000), static_cast<bool>(x & 0x00004000),
+          static_cast<bool>(x & 0x00002000), static_cast<bool>(x & 0x00001000),
+          static_cast<bool>(x & 0x00000800), static_cast<bool>(x & 0x00000400),
+          static_cast<bool>(x & 0x00000200), static_cast<bool>(x & 0x00000100),
+          static_cast<bool>(x & 0x00000080), static_cast<bool>(x & 0x00000040),
+          static_cast<bool>(x & 0x00000020), static_cast<bool>(x & 0x00000010),
+          static_cast<bool>(x & 0x00000008), static_cast<bool>(x & 0x00000004),
+          static_cast<bool>(x & 0x00000002), static_cast<bool>(x & 0x00000001)};
 }

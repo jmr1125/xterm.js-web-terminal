@@ -16,7 +16,7 @@ struct write_req_t;
 struct Socket {
   Socket() = delete;
   Socket(string addr, int port);
-  void listen_accept();
+  void listen_accept(uv_connection_cb);
   int read(string &);
   int write(const string &);
   void stop();

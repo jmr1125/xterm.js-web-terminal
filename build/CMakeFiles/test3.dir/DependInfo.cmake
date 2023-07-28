@@ -8,6 +8,7 @@ set(CMAKE_DEPENDS_LANGUAGES
 
 # The set of dependency files which are needed:
 set(CMAKE_DEPENDS_DEPENDENCY_FILES
+  "/Users/jiang/webterm/base64.cpp" "CMakeFiles/test3.dir/base64.cpp.o" "gcc" "CMakeFiles/test3.dir/base64.cpp.o.d"
   "/Users/jiang/webterm/sha1.cpp" "CMakeFiles/test3.dir/sha1.cpp.o" "gcc" "CMakeFiles/test3.dir/sha1.cpp.o.d"
   "/Users/jiang/webterm/test3.cpp" "CMakeFiles/test3.dir/test3.cpp.o" "gcc" "CMakeFiles/test3.dir/test3.cpp.o.d"
   )
