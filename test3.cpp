@@ -3,29 +3,29 @@
 #include <ios>
 #include <iostream>
 using namespace std;
-ostream &operator<<(ostream &ost, vector<bool> x) {
-  ost << "[";
-  // int id = 0;
-  // for (bool i : x) {
-  //   if (id % 64 == 0) {
-  //     ost << endl;
-  //   }
-  //   ost << i << ' ';
-  //   ++id;
-  // }
-  for (int i = 0; i < x.size(); i += 4) {
-    int v = x[i] * 8 + x[i + 1] * 4 + x[i + 2] * 2 + x[i + 3] * 1;
-    if (i % (8 * 4) == 0) {
-      ost << ' ';
-    }
-    if (i % (32 * 4) == 0) {
-      ost << endl;
-    }
-    ost << ((string) "0123456789abcdef").at(v);
-  }
-  ost << "\n]";
-  return ost;
-}
+// ostream &operator<<(ostream &ost, vector<bool> x) {
+//   ost << "[";
+//   // int id = 0;
+//   // for (bool i : x) {
+//   //   if (id % 64 == 0) {
+//   //     ost << endl;
+//   //   }
+//   //   ost << i << ' ';
+//   //   ++id;
+//   // }
+//   for (int i = 0; i < x.size(); i += 4) {
+//     int v = x[i] * 8 + x[i + 1] * 4 + x[i + 2] * 2 + x[i + 3] * 1;
+//     if (i % (8 * 4) == 0) {
+//       ost << ' ';
+//     }
+//     if (i % (32 * 4) == 0) {
+//       ost << endl;
+//     }
+//     ost << ((string) "0123456789abcdef").at(v);
+//   }
+//   ost << "\n]";
+//   return ost;
+// }
 int main() {
   vector<bool> input{
       0, 1, 0, 0, 1, 0, 0, 0, /*H*/

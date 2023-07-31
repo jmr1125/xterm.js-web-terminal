@@ -22,19 +22,20 @@ void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf) {
   buf->len = suggested_size;
 }
 
-void echo_write(uv_write_t *req, int status) {
+void write(uv_write_t *req, int status) {
+	printf("write\n");
   if (status) {
     fprintf(stderr, "Write error %s\n", uv_strerror(status));
   }
   free_write_req(req);
 }
 
-void echo_read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
+void read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
   if (nread > 0) {
     write_req_t *req = (write_req_t *)malloc(sizeof(write_req_t));
     req->buf = uv_buf_init(buf->base, nread);
     printf("(\n%s\n)\n", buf->base);
-    uv_write((uv_write_t *)req, client, &req->buf, 1, echo_write);
+    uv_write((uv_write_t *)req, client, &req->buf, 1, write);
     return;
   }
   if (nread < 0) {
@@ -57,7 +58,7 @@ void on_new_connection(uv_stream_t *server, int status) {
   uv_tcp_t *client = (uv_tcp_t *)malloc(sizeof(uv_tcp_t));
   uv_tcp_init(loop, client);
   if (uv_accept(server, (uv_stream_t *)client) == 0) {
-    uv_read_start((uv_stream_t *)client, alloc_buffer, echo_read);
+    uv_read_start((uv_stream_t *)client, alloc_buffer, read);
   } else {
     uv_close((uv_handle_t *)client, NULL);
   }
@@ -69,7 +70,7 @@ int main() {
   uv_tcp_t server;
   uv_tcp_init(loop, &server);
 
-  uv_ip4_addr("127.0.0.1", 9000, &addr);
+  uv_ip4_addr("127.0.0.1", 8080, &addr);
 
   uv_tcp_bind(&server, (const struct sockaddr *)&addr, 0);
   int r = uv_listen((uv_stream_t *)&server, 16, on_new_connection);

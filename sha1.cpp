@@ -181,3 +181,19 @@ vector<bool> to_vector(DWORD x) {
           static_cast<bool>(x & 0x00000008), static_cast<bool>(x & 0x00000004),
           static_cast<bool>(x & 0x00000002), static_cast<bool>(x & 0x00000001)};
 }
+
+std::ostream &operator<<(std::ostream &ost, vector<bool> x) {
+  ost << "[";
+  for (int i = 0; i < x.size(); i += 4) {
+    int v = x[i] * 8 + x[i + 1] * 4 + x[i + 2] * 2 + x[i + 3] * 1;
+    if (i % (8 * 4) == 0) {
+      ost << ' ';
+    }
+    if (i % (32 * 4) == 0) {
+      ost << std::endl;
+    }
+    ost << ((string) "0123456789abcdef").at(v);
+  }
+  ost << "\n]";
+  return ost;
+}

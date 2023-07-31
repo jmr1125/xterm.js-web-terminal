@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/test6.dir/sha1.cpp.o.d"
   "CMakeFiles/test6.dir/test6.cpp.o"
   "CMakeFiles/test6.dir/test6.cpp.o.d"
+  "CMakeFiles/test6.dir/ws.cpp.o"
+  "CMakeFiles/test6.dir/ws.cpp.o.d"
   "test6"
   "test6.pdb"
 )

@@ -11,6 +11,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "/Users/jiang/webterm/base64.cpp" "CMakeFiles/test6.dir/base64.cpp.o" "gcc" "CMakeFiles/test6.dir/base64.cpp.o.d"
   "/Users/jiang/webterm/sha1.cpp" "CMakeFiles/test6.dir/sha1.cpp.o" "gcc" "CMakeFiles/test6.dir/sha1.cpp.o.d"
   "/Users/jiang/webterm/test6.cpp" "CMakeFiles/test6.dir/test6.cpp.o" "gcc" "CMakeFiles/test6.dir/test6.cpp.o.d"
+  "/Users/jiang/webterm/ws.cpp" "CMakeFiles/test6.dir/ws.cpp.o" "gcc" "CMakeFiles/test6.dir/ws.cpp.o.d"
   )
 
 # Targets to which this target links which contain Fortran sources.

@@ -1,27 +1,14 @@
 #include "base64.h"
 #include "sha1.h"
+#include "ws.h"
 #include <iostream>
+#include <ostream>
 using std::cout;
 using std::endl;
-std::ostream &operator<<(std::ostream &ost, vector<bool> x) {
-  ost << "[";
-  for (int i = 0; i < x.size(); i += 4) {
-    int v = x[i] * 8 + x[i + 1] * 4 + x[i + 2] * 2 + x[i + 3] * 1;
-    if (i % (8 * 4) == 0) {
-      ost << ' ';
-    }
-    if (i % (32 * 4) == 0) {
-      ost << endl;
-    }
-    ost << ((string) "0123456789abcdef").at(v);
-  }
-  ost << "\n]";
-  return ost;
-}
-int main() {
+void test(string s1, string expect) {
   vector<bool> result;
   const string magickey = "258EAFA5-E914-47DA-95CA-C5AB0DC85B11";
-  string key = "dGhlIHNhbXBsZSBub25jZQ==";
+  string key = s1;
   key += magickey;
   vector<vector<bool>> Blocks = blocks(pad(to_vector(key)));
   vector<DWORD> res = Initabcde;
@@ -37,8 +24,12 @@ int main() {
   }
   cout << endl;
   cout << "result: " << encode(result) << endl;
-  cout << "expect: "
-       << "s3pPLMBiTxaQ9kYGzzhZRbK+xOo=" << endl;
+  cout << "expect: " << expect << endl;
+}
+int main() {
+  test("dGhlIHNhbXBsZSBub25jZQ==", "s3pPLMBiTxaQ9kYGzzhZRbK+xOo=");
+  test("0WwsB8bLMlLJ9x9/V7s9rQ==", "b3xeeAGFIMKaSYqvbLdYmC+LaDA=");
+  cout << "      : " << get_Sec_ws_Accept("0WwsB8bLMlLJ9x9/V7s9rQ==") << endl;
 }
 
 /*

@@ -1,3 +1,4 @@
+#pragma once
 #include <string>
 #include <vector>
 using std::string;
@@ -26,3 +27,5 @@ vector<DWORD> blocksGetw(vector<bool>);
 vector<DWORD> loop80(vector<DWORD>, vector<DWORD>);
 vector<bool> to_vector(string);
 vector<bool> to_vector(DWORD);
+
+std::ostream &operator<<(std::ostream &ost, vector<bool> x);
