@@ -4,7 +4,7 @@
 #include <cassert>
 #include <cctype>
 #include <cstdio>
-#include <ios>
+// #include <ios>
 // #include <iostream>
 // using namespace std;
 
@@ -75,7 +75,9 @@ wsFrame to_frame(string s) {
     res.len = res.PayloadLen;
   }
   res.PayloadData.resize(res.len * 8);
-  std::copy(data.begin() + id, data.end(), res.PayloadData.begin());
+  if (res.len) {
+    std::copy(data.begin() + id, data.end(), res.PayloadData.begin());
+  }
   assert(res.PayloadData.size() % 8 == 0);
   res.data.resize(res.PayloadData.size() / 8);
   for (int i = 0; i < res.PayloadData.size(); i += 8) {
@@ -138,12 +140,35 @@ string from_frame(wsFrame x) {
   }
   v.reserve(v.size() + x.len * 8);
   v.insert(v.end(), x.PayloadData.begin(), x.PayloadData.end());
+  // cout << "v" << v << std::endl;
   string res = "";
+  assert(v.size() % 8 == 0);
   for (int i = 0; i < v.size(); i += 8) {
     res += (char)((v[i + 0] << 7) | (v[i + 1] << 6) | (v[i + 2] << 5) |
                   (v[i + 3] << 4) | (v[i + 4] << 3) | (v[i + 5] << 2) |
                   (v[i + 6] << 1) | (v[i + 7] << 0));
   }
+  return res;
+}
+wsFrame get_frame(string s) {
+  wsFrame res;
+  res.FIN = 1;
+  res.RSV1 = res.RSV2 = res.RSV3 = res.MASK = 0;
+  res.data = s;
+  res.PayloadData = to_vector(res.data);
+  res.len = s.size();
+  if (res.len > 125) {
+    if (res.len <= 0xffff) {
+      res.PayloadLen = 126;
+      res.extpayloadLen = res.len;
+    } else {
+      res.PayloadLen = 127;
+      res.extpayloadLen = res.len;
+    }
+  } else {
+    res.PayloadLen = res.len;
+  }
+  res.opcode = 1;
   return res;
 }
 
@@ -162,14 +187,14 @@ ostream &operator<<(ostream &ost, const wsFrame &x) {
   ost << "data: " << x.PayloadData << "\n";
   if (x.MASK) {
     for (int i = 0; i < x.data.size(); ++i) {
+      if (i % 8 == 0 && i) {
+        ost << "\n";
+      }
       auto c = x.data[i];
       if (std::isprint(c)) {
         ost << c;
       } else {
         ost << ".";
-      }
-      if (i % 8 == 0 && i) {
-        ost << "\n";
       }
     }
   }

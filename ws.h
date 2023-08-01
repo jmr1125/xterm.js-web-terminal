@@ -21,4 +21,5 @@ struct wsFrame {
 };
 wsFrame to_frame(string);
 string from_frame(wsFrame);
+wsFrame get_frame(string);
 ostream &operator<<(ostream &, const wsFrame &);

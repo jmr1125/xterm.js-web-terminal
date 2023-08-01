@@ -1,5 +1,6 @@
 #include "sha1.h"
 #include "ws.h"
+#include <cstdio>
 #include <iostream>
 #include <mutex>
 #include <ostream>
@@ -8,7 +9,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include <sys/wait.h>
 #include <thread>
 #include <uv.h>
 using std::cout;
@@ -169,15 +169,25 @@ int main() {
     write(handshake);
     for (int i = 0;; ++i) {
       string s = waitread();
-      cout << i << endl << s << endl << "-----" << endl;
-      cout << to_vector(s) << endl << "==========" << endl;
+      cout << "=====READ=====" << endl
+           << i
+           << endl
+           // << s << endl
+           << "-----" << endl;
+      // cout << to_vector(s) << endl << "==========" << endl;
       wsFrame frame = to_frame(s);
       cout << frame << endl << "===================" << endl;
-      cout << to_frame(from_frame(frame)) << endl;
-      write(from_frame(frame));
+      cout << "data: [" << frame.data << "]" << endl;
       if (frame.opcode == 8) {
         cout << endl << "=====DISCONNECT===" << endl;
         break;
+      }
+      {
+        string data;
+        std::cin >> data;
+        wsFrame tmp = get_frame(data);
+        cout << "write: [\n" << tmp << endl << "\n" << endl;
+        write(from_frame(tmp));
       }
     }
   }
