@@ -182,6 +182,19 @@ test6/fast:
 .PHONY : test6/fast
 
 #=============================================================================
+# Target rules for targets named test7
+
+# Build rule for target.
+test7: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 test7
+.PHONY : test7
+
+# fast build rule for target.
+test7/fast:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/build
+.PHONY : test7/fast
+
+#=============================================================================
 # Target rules for targets named main
 
 # Build rule for target.
@@ -202,6 +215,7 @@ base64.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/base64.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/base64.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/base64.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/base64.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/base64.cpp.o
 .PHONY : base64.cpp.o
 
@@ -213,6 +227,7 @@ base64.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/base64.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/base64.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/base64.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/base64.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/base64.cpp.i
 .PHONY : base64.cpp.i
 
@@ -224,6 +239,7 @@ base64.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/base64.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/base64.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/base64.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/base64.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/base64.cpp.s
 .PHONY : base64.cpp.s
 
@@ -259,6 +275,7 @@ sha1.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/sha1.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/sha1.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/sha1.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/sha1.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/sha1.cpp.o
 .PHONY : sha1.cpp.o
 
@@ -270,6 +287,7 @@ sha1.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/sha1.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/sha1.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/sha1.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/sha1.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/sha1.cpp.i
 .PHONY : sha1.cpp.i
 
@@ -281,8 +299,33 @@ sha1.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/sha1.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/sha1.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/sha1.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/sha1.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/sha1.cpp.s
 .PHONY : sha1.cpp.s
+
+socket.o: socket.cpp.o
+.PHONY : socket.o
+
+# target to build an object file
+socket.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.o
+.PHONY : socket.cpp.o
+
+socket.i: socket.cpp.i
+.PHONY : socket.i
+
+# target to preprocess a source file
+socket.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.i
+.PHONY : socket.cpp.i
+
+socket.s: socket.cpp.s
+.PHONY : socket.s
+
+# target to generate assembly for a file
+socket.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.s
+.PHONY : socket.cpp.s
 
 test1.o: test1.cpp.o
 .PHONY : test1.o
@@ -404,12 +447,37 @@ test6.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/test6.cpp.s
 .PHONY : test6.cpp.s
 
+test7.o: test7.cpp.o
+.PHONY : test7.o
+
+# target to build an object file
+test7.cpp.o:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test7.cpp.o
+.PHONY : test7.cpp.o
+
+test7.i: test7.cpp.i
+.PHONY : test7.i
+
+# target to preprocess a source file
+test7.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test7.cpp.i
+.PHONY : test7.cpp.i
+
+test7.s: test7.cpp.s
+.PHONY : test7.s
+
+# target to generate assembly for a file
+test7.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test7.cpp.s
+.PHONY : test7.cpp.s
+
 ws.o: ws.cpp.o
 .PHONY : ws.o
 
 # target to build an object file
 ws.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/ws.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/ws.cpp.o
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ws.cpp.o
 .PHONY : ws.cpp.o
 
@@ -419,6 +487,7 @@ ws.i: ws.cpp.i
 # target to preprocess a source file
 ws.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/ws.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/ws.cpp.i
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ws.cpp.i
 .PHONY : ws.cpp.i
 
@@ -428,6 +497,7 @@ ws.s: ws.cpp.s
 # target to generate assembly for a file
 ws.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/ws.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/ws.cpp.s
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ws.cpp.s
 .PHONY : ws.cpp.s
 
@@ -445,6 +515,7 @@ help:
 	@echo "... test4"
 	@echo "... test5"
 	@echo "... test6"
+	@echo "... test7"
 	@echo "... base64.o"
 	@echo "... base64.i"
 	@echo "... base64.s"
@@ -454,6 +525,9 @@ help:
 	@echo "... sha1.o"
 	@echo "... sha1.i"
 	@echo "... sha1.s"
+	@echo "... socket.o"
+	@echo "... socket.i"
+	@echo "... socket.s"
 	@echo "... test1.o"
 	@echo "... test1.i"
 	@echo "... test1.s"
@@ -469,6 +543,9 @@ help:
 	@echo "... test6.o"
 	@echo "... test6.i"
 	@echo "... test6.s"
+	@echo "... test7.o"
+	@echo "... test7.i"
+	@echo "... test7.s"
 	@echo "... ws.o"
 	@echo "... ws.i"
 	@echo "... ws.s"

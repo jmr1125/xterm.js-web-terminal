@@ -1,0 +1,61 @@
+#include "socket.h"
+#include "uv.h"
+#include "ws.h"
+#include <iostream>
+#include <regex>
+using namespace std;
+int main() {
+  Socket sock("127.0.0.1", 8080);
+  sock.listen();
+  message_t s;
+  {
+    s = sock.waitread();
+    if (s.first < 0) {
+      cout << uv_strerror(s.first) << endl;
+      return 1;
+    }
+  }
+  {
+    const regex r("Sec-WebSocket-Key: (.+)");
+    smatch sm;
+    if (!regex_search(s.second, sm, r)) {
+      cout << "no key found in \n" << s.second << endl;
+      return 1;
+    }
+    cout << "key = " << sm[1] << endl;
+    string handshake;
+    handshake.append("HTTP/1.1 101 Switching Protocols\r\n");
+    handshake.append("Upgrade: websocket\r\n");
+    handshake.append("Connection: Upgrade\r\n");
+    handshake.append("Sec-WebSocket-Accept: ");
+    handshake.append(get_Sec_ws_Accept(sm[1]));
+    handshake.append("\r\n\r\n");
+    sock.write(handshake);
+  }
+  cout << "vvvvvvvv" << s.second << endl << "^^^^^^^^" << endl;
+  while (true) {
+    s = sock.waitread();
+    if (s.first < 0) {
+      cout << uv_strerror(s.first) << endl;
+      return 1;
+    }
+    wsFrame frame = to_frame(s.second);
+    cout << "vvvvvvv#FRAME#vvvvvvv" << endl
+         << frame << endl
+         << "^^^^^^^#FRAME#^^^^^^^" << endl;
+    cout << "data = " << frame.data << endl;
+    if (frame.opcode == 8) {
+      cout << "=======DISCONNECT========" << endl;
+      break;
+    }
+    {
+      string data;
+      cin >> data;
+      wsFrame tmp = get_frame(data);
+      cout << "vvvvvvv#WRITE#vvvvvvv" << endl
+           << tmp << endl
+           << "^^^^^v^#WRITE#^^^^^^^" << endl;
+      sock.write(from_frame(tmp));
+    }
+  }
+}

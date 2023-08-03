@@ -1,4 +1,4 @@
-CMakeFiles/main.dir/socket.cpp.o: /Users/jiang/webterm/socket.cpp \
+CMakeFiles/test7.dir/socket.cpp.o: /Users/jiang/webterm/socket.cpp \
   /Users/jiang/webterm/socket.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/optional \
   /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX13.3.sdk/usr/include/c++/v1/__assert \

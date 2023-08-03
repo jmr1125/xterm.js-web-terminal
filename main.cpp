@@ -79,6 +79,7 @@ void write(uv_write_t *req, int status) {
 }
 
 void read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
+  // printf("i=%d\n", *(int *)client->data);
   if (nread > 0) {
     // printf("(\n%s\n)\n", buf->base);
     message.push(buf->base);
@@ -94,7 +95,7 @@ void read(uv_stream_t *client, ssize_t nread, const uv_buf_t *buf) {
 }
 
 void on_new_connection(uv_stream_t *server, int status) {
-  printf("new connection\n");
+  printf("new connection\n%d=1\n", *(int *)server->data);
   if (status < 0) {
     fprintf(stderr, "New connection error %s\n", uv_strerror(status));
     // error!
@@ -102,6 +103,7 @@ void on_new_connection(uv_stream_t *server, int status) {
   }
 
   uv_tcp_t *client = (uv_tcp_t *)malloc(sizeof(uv_tcp_t));
+  client->data = server->data;
   Client = (uv_stream_t *)client;
   uv_tcp_init(loop, client);
   if (uv_accept(server, (uv_stream_t *)client) == 0) {
@@ -137,6 +139,8 @@ int main() {
   loop = uv_default_loop();
 
   uv_tcp_t server;
+  int i = 1;
+  server.data = &i;
   uv_tcp_init(loop, &server);
 
   uv_ip4_addr("127.0.0.1", 8080, &addr);
