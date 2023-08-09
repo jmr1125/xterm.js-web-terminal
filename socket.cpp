@@ -37,7 +37,14 @@ int new_id() {
   }
   throw std::runtime_error("no more client");
 }
-void delete_id(int id) { pool_used[id] = false; }
+void delete_id(int id) {
+  pool_used[id] = false;
+  pool[id].client = pool[id].server = NULL;
+  while (pool[id].messages.size() > 0) {
+    pool[id].messages.pop();
+  }
+}
+bool Pool_used(int i) { return ::pool_used[i]; }
 Socket::Socket(string Addr, int port) {
   loop = uv_default_loop();
   server.data = this;
@@ -51,7 +58,6 @@ void Socket::listen() {
     // printf("new connection\n");
     uv_tcp_t *client = (uv_tcp_t *)malloc(sizeof(uv_tcp_t));
     int id = new_id();
-    ((Socket *)server->data)->id.push_back(id);
     client->data = new int(id);
     uv_tcp_init(((Socket *)server->data)->loop, client);
     pool[id].client = (uv_stream_t *)client;
@@ -74,7 +80,7 @@ void Socket::listen() {
   th = new (thread)(uv_run, loop, UV_RUN_DEFAULT);
 }
 optional<message_t> Socket::read(int i) {
-  int Id = id[i];
+  int Id = i;
   if (pool[Id].messages.size()) {
     message_t tmp = pool[Id].messages.front();
     pool[Id].messages.pop();
@@ -90,7 +96,7 @@ message_t Socket::waitread(int i) {
   return tmp.value();
 }
 int Socket::write(string s, int i) {
-  int Id = id[i];
+  int Id = i;
   static thread_local int err = 0;
   write_req_t *req = (write_req_t *)malloc(sizeof(write_req_t));
   char *str = (char *)calloc(sizeof(char), s.length());
@@ -106,17 +112,17 @@ int Socket::write(string s, int i) {
   return err;
 }
 Socket::~Socket() {
-  for (int i = 0; i < id.size(); ++i) {
-    close(i);
-  }
   uv_stop(loop);
   uv_loop_close(loop);
   th->detach();
   delete th;
 }
 void Socket::close(int i) {
-  delete (int *)pool[id[i]].client->data;
-  uv_close((uv_handle_t *)pool[id[i]].client, NULL);
-  delete_id(id[i]);
-  id.erase(id.begin() + i);
+  // if (pool[id[i]].client->data) {
+  //   // delete (int *)pool[id[i]].client->data;
+  //   pool[id[i]].client->data = NULL;
+  // }
+  uv_close((uv_handle_t *)pool[i].client,
+           [](uv_handle_t *handle) { delete (int *)handle->data; });
+  delete_id(i);
 }

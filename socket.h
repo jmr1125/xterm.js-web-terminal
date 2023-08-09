@@ -21,5 +21,5 @@ struct Socket {
   uv_loop_t *loop;
   uv_tcp_t server;
   thread *th;
-  vector<int> id;
 };
+bool Pool_used(int);

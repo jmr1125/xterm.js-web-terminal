@@ -5,6 +5,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/main.dir/main.cpp.o.d"
   "CMakeFiles/main.dir/sha1.cpp.o"
   "CMakeFiles/main.dir/sha1.cpp.o.d"
+  "CMakeFiles/main.dir/socket.cpp.o"
+  "CMakeFiles/main.dir/socket.cpp.o.d"
   "CMakeFiles/main.dir/ws.cpp.o"
   "CMakeFiles/main.dir/ws.cpp.o.d"
   "main"

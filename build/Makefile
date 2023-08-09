@@ -309,6 +309,7 @@ socket.o: socket.cpp.o
 # target to build an object file
 socket.cpp.o:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.o
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/socket.cpp.o
 .PHONY : socket.cpp.o
 
 socket.i: socket.cpp.i
@@ -317,6 +318,7 @@ socket.i: socket.cpp.i
 # target to preprocess a source file
 socket.cpp.i:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.i
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/socket.cpp.i
 .PHONY : socket.cpp.i
 
 socket.s: socket.cpp.s
@@ -325,6 +327,7 @@ socket.s: socket.cpp.s
 # target to generate assembly for a file
 socket.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.s
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/socket.cpp.s
 .PHONY : socket.cpp.s
 
 test1.o: test1.cpp.o

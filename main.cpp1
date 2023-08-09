@@ -8,6 +8,8 @@
 using namespace std;
 Socket sock("127.0.0.1", 8080);
 int server(int i) {
+  while (!sock.id.size())
+    ;
   message_t s;
   {
     s = sock.waitread(i);
@@ -23,7 +25,7 @@ int server(int i) {
       cout << "no key found in \n" << s.second << endl;
       return 1;
     }
-    // cout << "key = " << sm[1] << endl;
+    cout << "key = " << sm[1] << endl;
     string handshake;
     handshake.append("HTTP/1.1 101 Switching Protocols\r\n");
     handshake.append("Upgrade: websocket\r\n");
@@ -33,7 +35,7 @@ int server(int i) {
     handshake.append("\r\n\r\n");
     sock.write(handshake, i);
   }
-  // cout << "vvvvvvvv" << s.second << endl << "^^^^^^^^" << endl;
+  cout << "vvvvvvvv" << s.second << endl << "^^^^^^^^" << endl;
   while (true) {
     s = sock.waitread(i);
     if (s.first < 0) {
@@ -41,12 +43,12 @@ int server(int i) {
       return 1;
     }
     wsFrame frame = to_frame(s.second);
-    // cout << "vvvvvvv#FRAME#vvvvvvv" << endl
-    //      << frame << endl
-    //      << "^^^^^^^#FRAME#^^^^^^^" << endl;
-    // cout << "data = " << frame.data << endl;
+    cout << "vvvvvvv#FRAME#vvvvvvv" << endl
+         << frame << endl
+         << "^^^^^^^#FRAME#^^^^^^^" << endl;
+    cout << "data = " << frame.data << endl;
     if (frame.opcode == 8) {
-      // cout << "=======DISCONNECT========" << endl;
+      cout << "=======DISCONNECT========" << endl;
       break;
     }
     {
@@ -55,9 +57,9 @@ int server(int i) {
       string data = (v[ID++]);
       // cin >> data;
       wsFrame tmp = get_frame(data);
-      // cout << "vvvvvvv#WRITE#vvvvvvv" << endl
-      //      << tmp << endl
-      //      << "^^^^^^^#WRITE#^^^^^^^" << endl;
+      cout << "vvvvvvv#WRITE#vvvvvvv" << endl
+           << tmp << endl
+           << "^^^^^^^#WRITE#^^^^^^^" << endl;
       sock.write(from_frame(tmp), i);
     }
   }
@@ -74,7 +76,7 @@ int main() {
       first || [used]() -> bool {
         for (int i = 0; i < MAX_CLIENT; ++i) {
           if (used[i]) {
-            // cout << "there's still client!!" << endl;
+            cout << "there's still client!!" << endl;
             return true;
           }
         }
@@ -83,13 +85,14 @@ int main() {
     cout << "refresh..." << endl;
     for (int i = 0; i < MAX_CLIENT; ++i) {
       cout << i << ": ";
-      if (Pool_used(i) && !used[i]) {
+      if (find(sock.id.begin(), sock.id.end(), i) != sock.id.end() &&
+          !used[i]) {
         cout << "new!";
         assert(threadpool[i] == NULL);
         threadpool[i] = new (thread)(server, i);
         used[i] = true;
         first = false;
-      } else if (!Pool_used(i) &&
+      } else if (find(sock.id.begin(), sock.id.end(), i) == sock.id.end() &&
                  used[i]) {
         cout << "delete!";
         threadpool[i]->join();
@@ -99,11 +102,8 @@ int main() {
       } else {
         cout << "nothing..";
       }
-      cout << "   ";
       cout << endl;
     }
-    cout << "\033[17A";
-    cout.flush();
     {
       int now = clock();
       while (clock() - now <= 2 * CLOCKS_PER_SEC)
