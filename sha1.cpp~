@@ -1,0 +1,4 @@
+#include "sha1.h"
+string block512(string s) {
+  size_t size=s.size();
+}
