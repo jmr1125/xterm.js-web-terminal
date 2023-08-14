@@ -126,7 +126,7 @@ test1: cmake_check_build_system
 
 # fast build rule for target.
 test1/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/build
+	$(MAKE) $(MAKESILENT) -f libuv/CMakeFiles/test1.dir/build.make libuv/CMakeFiles/test1.dir/build
 .PHONY : test1/fast
 
 #=============================================================================
@@ -139,7 +139,7 @@ test3: cmake_check_build_system
 
 # fast build rule for target.
 test3/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/build
+	$(MAKE) $(MAKESILENT) -f libuv/CMakeFiles/test3.dir/build.make libuv/CMakeFiles/test3.dir/build
 .PHONY : test3/fast
 
 #=============================================================================
@@ -152,7 +152,7 @@ test4: cmake_check_build_system
 
 # fast build rule for target.
 test4/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/build
+	$(MAKE) $(MAKESILENT) -f libuv/CMakeFiles/test4.dir/build.make libuv/CMakeFiles/test4.dir/build
 .PHONY : test4/fast
 
 #=============================================================================
@@ -165,7 +165,7 @@ test5: cmake_check_build_system
 
 # fast build rule for target.
 test5/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/build
+	$(MAKE) $(MAKESILENT) -f libuv/CMakeFiles/test5.dir/build.make libuv/CMakeFiles/test5.dir/build
 .PHONY : test5/fast
 
 #=============================================================================
@@ -178,7 +178,7 @@ test6: cmake_check_build_system
 
 # fast build rule for target.
 test6/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/build
+	$(MAKE) $(MAKESILENT) -f libuv/CMakeFiles/test6.dir/build.make libuv/CMakeFiles/test6.dir/build
 .PHONY : test6/fast
 
 #=============================================================================
@@ -191,7 +191,7 @@ test7: cmake_check_build_system
 
 # fast build rule for target.
 test7/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/build
+	$(MAKE) $(MAKESILENT) -f libuv/CMakeFiles/test7.dir/build.make libuv/CMakeFiles/test7.dir/build
 .PHONY : test7/fast
 
 #=============================================================================
@@ -204,7 +204,7 @@ test8: cmake_check_build_system
 
 # fast build rule for target.
 test8/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/build
+	$(MAKE) $(MAKESILENT) -f libuv/CMakeFiles/test8.dir/build.make libuv/CMakeFiles/test8.dir/build
 .PHONY : test8/fast
 
 #=============================================================================
@@ -217,356 +217,8 @@ main: cmake_check_build_system
 
 # fast build rule for target.
 main/fast:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/build
+	$(MAKE) $(MAKESILENT) -f libuv/CMakeFiles/main.dir/build.make libuv/CMakeFiles/main.dir/build
 .PHONY : main/fast
-
-base64.o: base64.cpp.o
-.PHONY : base64.o
-
-# target to build an object file
-base64.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/base64.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/base64.cpp.o
-.PHONY : base64.cpp.o
-
-base64.i: base64.cpp.i
-.PHONY : base64.i
-
-# target to preprocess a source file
-base64.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/base64.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/base64.cpp.i
-.PHONY : base64.cpp.i
-
-base64.s: base64.cpp.s
-.PHONY : base64.s
-
-# target to generate assembly for a file
-base64.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/base64.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/base64.cpp.s
-.PHONY : base64.cpp.s
-
-main.o: main.cpp.o
-.PHONY : main.o
-
-# target to build an object file
-main.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.o
-.PHONY : main.cpp.o
-
-main.i: main.cpp.i
-.PHONY : main.i
-
-# target to preprocess a source file
-main.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.i
-.PHONY : main.cpp.i
-
-main.s: main.cpp.s
-.PHONY : main.s
-
-# target to generate assembly for a file
-main.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/main.cpp.s
-.PHONY : main.cpp.s
-
-sha1.o: sha1.cpp.o
-.PHONY : sha1.o
-
-# target to build an object file
-sha1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/sha1.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/sha1.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/sha1.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/sha1.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/sha1.cpp.o
-.PHONY : sha1.cpp.o
-
-sha1.i: sha1.cpp.i
-.PHONY : sha1.i
-
-# target to preprocess a source file
-sha1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/sha1.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/sha1.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/sha1.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/sha1.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/sha1.cpp.i
-.PHONY : sha1.cpp.i
-
-sha1.s: sha1.cpp.s
-.PHONY : sha1.s
-
-# target to generate assembly for a file
-sha1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/sha1.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/sha1.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/sha1.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/sha1.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/sha1.cpp.s
-.PHONY : sha1.cpp.s
-
-shell_runner.o: shell_runner.cpp.o
-.PHONY : shell_runner.o
-
-# target to build an object file
-shell_runner.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/shell_runner.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shell_runner.cpp.o
-.PHONY : shell_runner.cpp.o
-
-shell_runner.i: shell_runner.cpp.i
-.PHONY : shell_runner.i
-
-# target to preprocess a source file
-shell_runner.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/shell_runner.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shell_runner.cpp.i
-.PHONY : shell_runner.cpp.i
-
-shell_runner.s: shell_runner.cpp.s
-.PHONY : shell_runner.s
-
-# target to generate assembly for a file
-shell_runner.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/shell_runner.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/shell_runner.cpp.s
-.PHONY : shell_runner.cpp.s
-
-socket.o: socket.cpp.o
-.PHONY : socket.o
-
-# target to build an object file
-socket.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/socket.cpp.o
-.PHONY : socket.cpp.o
-
-socket.i: socket.cpp.i
-.PHONY : socket.i
-
-# target to preprocess a source file
-socket.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/socket.cpp.i
-.PHONY : socket.cpp.i
-
-socket.s: socket.cpp.s
-.PHONY : socket.s
-
-# target to generate assembly for a file
-socket.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/socket.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/socket.cpp.s
-.PHONY : socket.cpp.s
-
-test1.o: test1.cpp.o
-.PHONY : test1.o
-
-# target to build an object file
-test1.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/test1.cpp.o
-.PHONY : test1.cpp.o
-
-test1.i: test1.cpp.i
-.PHONY : test1.i
-
-# target to preprocess a source file
-test1.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/test1.cpp.i
-.PHONY : test1.cpp.i
-
-test1.s: test1.cpp.s
-.PHONY : test1.s
-
-# target to generate assembly for a file
-test1.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test1.dir/build.make CMakeFiles/test1.dir/test1.cpp.s
-.PHONY : test1.cpp.s
-
-test3.o: test3.cpp.o
-.PHONY : test3.o
-
-# target to build an object file
-test3.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/test3.cpp.o
-.PHONY : test3.cpp.o
-
-test3.i: test3.cpp.i
-.PHONY : test3.i
-
-# target to preprocess a source file
-test3.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/test3.cpp.i
-.PHONY : test3.cpp.i
-
-test3.s: test3.cpp.s
-.PHONY : test3.s
-
-# target to generate assembly for a file
-test3.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test3.dir/build.make CMakeFiles/test3.dir/test3.cpp.s
-.PHONY : test3.cpp.s
-
-test4.o: test4.cpp.o
-.PHONY : test4.o
-
-# target to build an object file
-test4.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/test4.cpp.o
-.PHONY : test4.cpp.o
-
-test4.i: test4.cpp.i
-.PHONY : test4.i
-
-# target to preprocess a source file
-test4.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/test4.cpp.i
-.PHONY : test4.cpp.i
-
-test4.s: test4.cpp.s
-.PHONY : test4.s
-
-# target to generate assembly for a file
-test4.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test4.dir/build.make CMakeFiles/test4.dir/test4.cpp.s
-.PHONY : test4.cpp.s
-
-test5.o: test5.cpp.o
-.PHONY : test5.o
-
-# target to build an object file
-test5.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/test5.cpp.o
-.PHONY : test5.cpp.o
-
-test5.i: test5.cpp.i
-.PHONY : test5.i
-
-# target to preprocess a source file
-test5.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/test5.cpp.i
-.PHONY : test5.cpp.i
-
-test5.s: test5.cpp.s
-.PHONY : test5.s
-
-# target to generate assembly for a file
-test5.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test5.dir/build.make CMakeFiles/test5.dir/test5.cpp.s
-.PHONY : test5.cpp.s
-
-test6.o: test6.cpp.o
-.PHONY : test6.o
-
-# target to build an object file
-test6.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/test6.cpp.o
-.PHONY : test6.cpp.o
-
-test6.i: test6.cpp.i
-.PHONY : test6.i
-
-# target to preprocess a source file
-test6.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/test6.cpp.i
-.PHONY : test6.cpp.i
-
-test6.s: test6.cpp.s
-.PHONY : test6.s
-
-# target to generate assembly for a file
-test6.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/test6.cpp.s
-.PHONY : test6.cpp.s
-
-test7.o: test7.cpp.o
-.PHONY : test7.o
-
-# target to build an object file
-test7.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test7.cpp.o
-.PHONY : test7.cpp.o
-
-test7.i: test7.cpp.i
-.PHONY : test7.i
-
-# target to preprocess a source file
-test7.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test7.cpp.i
-.PHONY : test7.cpp.i
-
-test7.s: test7.cpp.s
-.PHONY : test7.s
-
-# target to generate assembly for a file
-test7.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/test7.cpp.s
-.PHONY : test7.cpp.s
-
-test8.o: test8.cpp.o
-.PHONY : test8.o
-
-# target to build an object file
-test8.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/test8.cpp.o
-.PHONY : test8.cpp.o
-
-test8.i: test8.cpp.i
-.PHONY : test8.i
-
-# target to preprocess a source file
-test8.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/test8.cpp.i
-.PHONY : test8.cpp.i
-
-test8.s: test8.cpp.s
-.PHONY : test8.s
-
-# target to generate assembly for a file
-test8.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test8.dir/build.make CMakeFiles/test8.dir/test8.cpp.s
-.PHONY : test8.cpp.s
-
-ws.o: ws.cpp.o
-.PHONY : ws.o
-
-# target to build an object file
-ws.cpp.o:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/ws.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/ws.cpp.o
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ws.cpp.o
-.PHONY : ws.cpp.o
-
-ws.i: ws.cpp.i
-.PHONY : ws.i
-
-# target to preprocess a source file
-ws.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/ws.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/ws.cpp.i
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ws.cpp.i
-.PHONY : ws.cpp.i
-
-ws.s: ws.cpp.s
-.PHONY : ws.s
-
-# target to generate assembly for a file
-ws.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test6.dir/build.make CMakeFiles/test6.dir/ws.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/test7.dir/build.make CMakeFiles/test7.dir/ws.cpp.s
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/main.dir/build.make CMakeFiles/main.dir/ws.cpp.s
-.PHONY : ws.cpp.s
 
 # Help Target
 help:
@@ -584,45 +236,6 @@ help:
 	@echo "... test6"
 	@echo "... test7"
 	@echo "... test8"
-	@echo "... base64.o"
-	@echo "... base64.i"
-	@echo "... base64.s"
-	@echo "... main.o"
-	@echo "... main.i"
-	@echo "... main.s"
-	@echo "... sha1.o"
-	@echo "... sha1.i"
-	@echo "... sha1.s"
-	@echo "... shell_runner.o"
-	@echo "... shell_runner.i"
-	@echo "... shell_runner.s"
-	@echo "... socket.o"
-	@echo "... socket.i"
-	@echo "... socket.s"
-	@echo "... test1.o"
-	@echo "... test1.i"
-	@echo "... test1.s"
-	@echo "... test3.o"
-	@echo "... test3.i"
-	@echo "... test3.s"
-	@echo "... test4.o"
-	@echo "... test4.i"
-	@echo "... test4.s"
-	@echo "... test5.o"
-	@echo "... test5.i"
-	@echo "... test5.s"
-	@echo "... test6.o"
-	@echo "... test6.i"
-	@echo "... test6.s"
-	@echo "... test7.o"
-	@echo "... test7.i"
-	@echo "... test7.s"
-	@echo "... test8.o"
-	@echo "... test8.i"
-	@echo "... test8.s"
-	@echo "... ws.o"
-	@echo "... ws.i"
-	@echo "... ws.s"
 .PHONY : help
 
 

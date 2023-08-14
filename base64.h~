@@ -1,7 +1,0 @@
-#include <string>
-#include <vector>
-using std::string;
-using std::vector;
-
-vector<bool> encode(string);
-string decode(vector<bool>);
