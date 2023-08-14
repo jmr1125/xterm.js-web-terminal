@@ -144,53 +144,33 @@ void wsserver(int i, string key) {
         if (ret <= 0) {
           continue;
         }
-        string data1;
-        // for (int i = 0; i < ret; ++i) {
-        //   if (iscntrl(data[i])) {
-        //     data1 += "\\u";
-        //     data1 += "0123456789abcdef"[(data[i] & 0xf0) >> 4];
-        //     data1 += "0123456789abcdef"[(data[i] & 0x0f) >> 0];
-        //     ++i;
-        //     data1 += "0123456789abcdef"[(data[i] & 0xf0) >> 4];
-        //     data1 += "0123456789abcdef"[(data[i] & 0x0f) >> 0];
-        //   } else {
-        //     data1 += data[i];
-        //   }
-        // }
-        data1 = data;
-        wsFrame tmp = get_frame(data1);
-        // cout << "vvvvvvv#WRITE#vvvvvvv" << endl
-        //      << tmp << endl
-        //      << "^^^^^^^#WRITE#^^^^^^^" << endl;
+        wsFrame tmp = get_frame(data);
         sock.write(from_frame(tmp), i);
       }
     }
   });
   while (true) {
-    string res;
     wsFrame frame;
     bool ok = true;
     message_t s;
-    while (true) {
-      try {
-        s = sock.waitread(i);
-        if (s.first < 0) {
-          cout << i << ">>" << uv_strerror(s.first) << endl;
-          return;
-        }
-        res += s.second;
-        frame = to_frame(res);
-        break;
-      } catch (const out_of_range &ex) {
-        ok = false;
-        cout << i << ">>"
-             << "error on read frame" << endl;
+    try {
+      s = sock.waitread(i);
+      if (s.first < 0) {
+        cout << i << ">>" << uv_strerror(s.first) << endl;
+        quit = true;
+        tmp.join();
+        cout << i << "->"
+             << "kill: " << kill(term, SIGKILL) << endl;
+        cout << i << "->"
+             << "status: " << get_status(term) << endl;
+        return;
       }
+      frame = to_frame(s.second);
+    } catch (const out_of_range &ex) {
+      ok = false;
+      cout << i << ">>"
+           << "error on read frame" << endl;
     }
-    // cout << "vvvvvvv#FRAME#vvvvvvv" << endl
-    //      << frame << endl
-    //      << "^^^^^^^#FRAME#^^^^^^^" << endl;
-    // cout << "data = " << frame.data << endl;
     if (ok) {
       write(term.x, frame.data.c_str(), frame.data.length());
     } else {
@@ -220,8 +200,7 @@ int server(int i) {
       return 1;
     }
     cout << i << "=>"
-         << "vvvvvvvv" << s.second << endl
-         << "^^^^^^^^" << endl;
+         << "read" << endl;
   }
   {
     const regex r("Sec-WebSocket-Key: (.+)");
@@ -251,43 +230,52 @@ int server(int i) {
 #include <ctime>
 int main() {
   thread *threadpool[MAX_CLIENT] = {NULL};
-  bool used[MAX_CLIENT];
   sock.listen();
-  bool first = true;
-  while ( // getchar() != 'q'
-      first || [used]() -> bool {
+  bool quit = false;
+  thread t([&quit]() {
+    char c;
+    do {
+      cout << "Quit/Dump" << endl;
+      if (c == 'd') {
+        string res = "aaa";
         for (int i = 0; i < MAX_CLIENT; ++i) {
-          if (used[i]) {
-            // cout << "there's still client!!" << endl;
-            return true;
+          // cout << i << " ";
+          switch (get_pool(i).status) {
+          case client_status::NON:
+            res += "\033[0m";
+            break;
+          case client_status::NEW:
+            res += "\033[32m";
+            break;
+          case client_status::RUNNING:
+            res += "\033[31m";
+            break;
+          case client_status::DONE:
+            res += "\033[34m";
+            break;
           }
+          res += to_string(i);
+          res += "\033[0m";
         }
-        return false;
-      }()) {
-    // cout << "refresh..." << endl;
+        cout << res << endl;
+      }
+    } while ((c = getchar()) != 'q');
+    quit = true;
+  });
+  while (!quit) {
     for (int i = 0; i < MAX_CLIENT; ++i) {
-      if (Pool_used(i) && !used[i]) {
+      if (get_pool(i).status == client_status::NEW) {
         assert(threadpool[i] == NULL);
         threadpool[i] = new (thread)(server, i);
-        used[i] = true;
-        first = false;
-      } else if (!Pool_used(i) && used[i]) {
+        get_pool(i).status = client_status::RUNNING;
+      } else if (get_pool(i).status == client_status::DONE) {
         cout << "delete!";
         threadpool[i]->join();
         delete threadpool[i];
         threadpool[i] = NULL;
-        used[i] = false;
+        get_pool(i).status = client_status::NON;
       }
-      // if (Pool_used(i)) {
-      //   cout << " (" << i << ")";
-      // }
-      // cout << endl;
     }
-    // cout << endl;
-    //  {
-    //    int now = clock();
-    //    while (clock() - now <= 0.5 * CLOCKS_PER_SEC)
-    //      ;
-    //  }
   }
+  t.join();
 }

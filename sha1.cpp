@@ -103,11 +103,11 @@ vector<DWORD> blocksGetw(vector<bool> s) {
   return w;
 }
 int F(int i, vector<DWORD> abcde) {
-  DWORD a = abcde[0];
+  //  DWORD a = abcde[0];
   DWORD b = abcde[1];
   DWORD c = abcde[2];
   DWORD d = abcde[3];
-  DWORD e = abcde[4];
+  // DWORD e = abcde[4];
   if (i < 20) {
     return (b & c) | ((~b) & d);
   } else if (i < 40) {
@@ -151,6 +151,7 @@ vector<DWORD> loop80(vector<DWORD> w, vector<DWORD> abcde) {
 }
 vector<bool> to_vector(string s) {
   vector<bool> res;
+  res.reserve(s.size() * 8);
   for (char c : s) {
     res.push_back(c & 0x80);
     res.push_back(c & 0x40);

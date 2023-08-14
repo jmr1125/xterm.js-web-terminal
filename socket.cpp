@@ -12,10 +12,11 @@ static std::mutex mtx;
 int new_id() {
   mtx.lock();
   int res;
-  for (res = 0; pool_used[res]; ++res)
+  for (res = 0; pool_used[res] || pool[res].status != client_status::NON; ++res)
     ;
   if (res < MAX_CLIENT) {
     pool_used[res] = true;
+    pool[res].status = client_status::NEW;
     mtx.unlock();
     // printf("new %d", res);
     return res;
@@ -36,10 +37,13 @@ void delete_id(int id) {
   id_mtx.unlock();
 }
 bool Pool_used(int i) { return ::pool_used[i]; }
-Sock_t get_pool(int i) { return ::pool[i]; }
+Sock_t &get_pool(int i) { return ::pool[i]; }
 void alloc_buffer(uv_handle_t *handle, size_t suggested_size, uv_buf_t *buf) {
   buf->base = (char *)malloc(suggested_size);
   buf->len = suggested_size;
+  for (size_t off = 0; off < buf->len; ++off) {
+    *(buf->base + off) = 0;
+  }
 }
 Socket::Socket(string Addr, int port) {
   loop = uv_default_loop();
@@ -58,7 +62,6 @@ void Socket::listen() {
     uv_tcp_init(((Socket *)server->data)->loop, client);
     pool[id].client = (uv_stream_t *)client;
     pool[id].server = (uv_stream_t *)&((Socket *)server->data)->server;
-    pool[id].status = client_status::NEW;
     if (uv_accept(pool[id].server, pool[id].client) == 0) {
       uv_read_start(
           pool[id].client, alloc_buffer,
@@ -66,7 +69,10 @@ void Socket::listen() {
             // printf("read: %s %zd\n", buf->base, nread);
             pool[*(int *)(client->data)].messages.push(
                 std::make_pair(nread, buf->base));
+
             if (nread <= 0) {
+              free(buf->base);
+            } else {
               free(buf->base);
             }
           });
@@ -100,25 +106,11 @@ message_t Socket::waitread(int i) {
 int Socket::write(string s, int i) {
   int Id = i;
   static thread_local int err = 0;
-  // write_req_t *req = (write_req_t *)malloc(sizeof(write_req_t));
-  // char *str = (char *)calloc(sizeof(char), s.length());
-  // s.copy(str, s.size());
-  // req->buf = uv_buf_init(str, s.length());
-  // uv_write((uv_write_t *)req, pool[Id].client, &req->buf, 1,
-  //          [](uv_write_t *req, int status) {
-  //            free_write_req(req);
-  //            if (status) {
-  //              err = status;
-  //            }
-  //          });
-  // char *str = (char *)malloc(s.size());
-  // s.copy(str, s.size());
-  // uv_buf_t buf = uv_buf_init(str, s.size());
   uv_buf_t buf;
   size_t step = 2048;
   for (size_t off = 0; off < s.size(); off += step) {
     buf.base = s.data() + off;
-    buf.len = std::min(s.size() - 1 - off, step);
+    buf.len = std::min(s.size() - off, step);
     uv_write_t *req = (uv_write_t *)malloc(sizeof(uv_write_t));
     uv_write(req, pool[i].client, &buf, 1, [](uv_write_t *req, int status) {
       err = status;
@@ -134,10 +126,7 @@ Socket::~Socket() {
   delete th;
 }
 void Socket::close(int i) {
-  // if (pool[id[i]].client->data) {
-  //   // delete (int *)pool[id[i]].client->data;
-  //   pool[id[i]].client->data = NULL;
-  // }
+  uv_read_stop(pool[i].client);
   uv_close((uv_handle_t *)pool[i].client, [](uv_handle_t *handle) {
     delete (int *)handle->data;
     free(handle);

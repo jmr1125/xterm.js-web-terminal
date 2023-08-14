@@ -123,7 +123,7 @@ string from_frame(wsFrame x) {
   }
   if (x.PayloadLen == 126 || x.extpayloadLen == 127) {
     for (int i = ((x.PayloadLen == 126) ? 15 : 63); i >= 0; --i) {
-      v.insert(v.end(), x.extpayloadLen & (1 << i));
+      v.insert(v.end(), x.extpayloadLen & ((QWORD)1 << i));
     }
   }
   auto tmp = x.data;

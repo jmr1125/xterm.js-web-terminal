@@ -1,3 +1,4 @@
+#include <assert.h>
 #include <optional>
 #include <queue>
 #include <string>
@@ -24,13 +25,13 @@ struct Socket {
 };
 
 namespace client_status {
-enum status { NEW, DONE, PROCESS };
+enum status { NON, NEW, DONE, RUNNING };
 }
 struct Sock_t {
   uv_stream_t *client;
   uv_stream_t *server;
-  client_status::status status;
+  client_status::status status = client_status::NON;
   std::queue<message_t> messages;
 };
 bool Pool_used(int);
-Sock_t get_pool(int);
+Sock_t &get_pool(int);
