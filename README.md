@@ -2,6 +2,7 @@
 ----
 a terminal can be used in your browse
 it includes ws server and HTTP server
+using xterm.js and libuv or Boost
 ```
 +------+   websocket     +-------+          +-----+
 |browse| <===========>   |program| <======> | pty | <==> [real terminal]
