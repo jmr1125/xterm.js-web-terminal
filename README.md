@@ -12,7 +12,7 @@ it includes ws server and HTTP server
 cmake -S. -Bbuild
 cmake --build build
 ```
-#### 1.libuv __(recommended)__\
-run ```./build/libuv/main```\
-#### 2.Boost\
-run ```./build/libuv/srv```\
+#### 1.libuv __(recommended)__
+run ```./build/libuv/main```
+#### 2.Boost
+run ```./build/libuv/srv```
