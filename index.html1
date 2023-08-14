@@ -1,0 +1,17 @@
+<html>
+  <script>
+    const socket=new WebSocket("ws://localhost:8080");
+    socket.addEventListener("open",(event)=>{
+	socket.send("Hello");
+	recv.value=("open\n");
+    });
+    socket.addEventListener("message",(event)=>{
+	recv.value+=(event.data+"\n");
+    });
+  </script>
+  <input id="send">
+  <input type="button" OnClick="socket.send(send.value)" value="send it">
+  <input type="button" OnClick="socket.send('\n')" value="send Enter">
+  <div><br></div>
+  <input id="recv">
+</html>

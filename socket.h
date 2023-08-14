@@ -1,4 +1,5 @@
 #include <optional>
+#include <queue>
 #include <string>
 #include <thread>
 #include <utility>
@@ -6,10 +7,9 @@
 #define MAX_CLIENT 16
 typedef std::pair<ssize_t, std::string> message_t;
 using std::optional;
-using std::pair;
+using std::queue;
 using std::string;
 using std::thread;
-using std::vector;
 struct Socket {
   Socket(string, int);
   ~Socket();
@@ -22,4 +22,15 @@ struct Socket {
   uv_tcp_t server;
   thread *th;
 };
+
+namespace client_status {
+enum status { NEW, DONE, PROCESS };
+}
+struct Sock_t {
+  uv_stream_t *client;
+  uv_stream_t *server;
+  client_status::status status;
+  std::queue<message_t> messages;
+};
 bool Pool_used(int);
+Sock_t get_pool(int);

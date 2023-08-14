@@ -89,8 +89,7 @@ int main() {
         threadpool[i] = new (thread)(server, i);
         used[i] = true;
         first = false;
-      } else if (!Pool_used(i) &&
-                 used[i]) {
+      } else if (!Pool_used(i) && used[i]) {
         cout << "delete!";
         threadpool[i]->join();
         delete threadpool[i];
