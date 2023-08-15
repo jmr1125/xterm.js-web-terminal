@@ -22,7 +22,7 @@ endif()
 if(${LIBUV_FOUND})
   add_subdirectory(libuv)
 endif()
-find_package(Boost COMPONENTS system REQUIRED)
+find_package(Boost COMPONENTS system)
 
 if(Boost_FOUND)
       add_subdirectory(boost)

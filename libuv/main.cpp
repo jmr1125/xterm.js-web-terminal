@@ -15,7 +15,7 @@
 #include <sys/signal.h>
 #include <unistd.h>
 using namespace std;
-Socket sock("127.0.0.1", 8080);
+Socket *sock;
 void httpserver(int i, string req) {
   string file;
   {
@@ -26,7 +26,7 @@ void httpserver(int i, string req) {
     } else {
       cout << i << "->"
            << "don't match" << endl;
-      sock.write("HTTP/1.1 500 Internal Server Error", i);
+      sock->write("HTTP/1.1 500 Internal Server Error", i);
       return;
     }
   }
@@ -117,7 +117,7 @@ void httpserver(int i, string req) {
   cout << i << "-> vvvv" << endl
        << i << "->" << response.substr(0, 500) << "\n..." << endl
        << i << "-> ^^^^" << endl;
-  sock.write(response, i);
+  sock->write(response, i);
 }
 void wsserver(int i, string key) {
   string handshake;
@@ -127,7 +127,7 @@ void wsserver(int i, string key) {
   handshake.append("Sec-WebSocket-Accept: ");
   handshake.append(get_Sec_ws_Accept(key));
   handshake.append("\r\n\r\n");
-  sock.write(handshake, i);
+  sock->write(handshake, i);
   bool quit = false;
   pty term = start("/bin/sh");
   thread tmp([&]() {
@@ -145,7 +145,7 @@ void wsserver(int i, string key) {
           continue;
         }
         wsFrame tmp = get_frame(data);
-        sock.write(from_frame(tmp), i);
+        sock->write(from_frame(tmp), i);
       }
     }
   });
@@ -154,7 +154,7 @@ void wsserver(int i, string key) {
     bool ok = true;
     message_t s;
     try {
-      s = sock.waitread(i);
+      s = sock->waitread(i);
       if (s.first < 0) {
         cout << i << ">>" << uv_strerror(s.first) << endl;
         quit = true;
@@ -181,6 +181,7 @@ void wsserver(int i, string key) {
     if (frame.opcode == 8) {
       cout << i << "->"
            << "=======DISCONNECT========" << endl;
+      cout << i << "->" << frame.data << endl;
       cout << i << "->"
            << "kill: " << kill(term, SIGKILL) << endl;
       cout << i << "->"
@@ -194,7 +195,7 @@ void wsserver(int i, string key) {
 int server(int i) {
   message_t s;
   {
-    s = sock.waitread(i);
+    s = sock->waitread(i);
     if (s.first < 0) {
       cout << uv_strerror(s.first) << endl;
       return 1;
@@ -221,23 +222,35 @@ int server(int i) {
     }
   }
   cout << i << "=>close" << endl;
-  sock.close(i);
-  cout << Pool_used(i) << endl;
-  cout << Pool_used(i) << endl;
-  cout << Pool_used(i) << endl;
+  sock->close(i);
   return 0;
 }
 #include <ctime>
-int main() {
+int main(int argc, char *argv[]) {
+  int port = 8080;
+  if (argc > 1) {
+    for (int i = 0; i < argc; ++i) {
+      if (strcmp(argv[i], "-p") == 0) {
+        if (i + 1 < argc)
+          port = stoi(argv[i + 1]);
+        else {
+          cerr << "usage: " << argv[0] << " -p port" << endl;
+          return 1;
+        }
+      }
+    }
+  }
+  sock = new Socket("127.0.0.1", port);
   thread *threadpool[MAX_CLIENT] = {NULL};
-  sock.listen();
+  sock->listen();
   bool quit = false;
   thread t([&quit]() {
     char c;
     do {
-      cout << "Quit/Dump" << endl;
+      cout << "main->"
+           << "Quit/Dump" << endl;
       if (c == 'd') {
-        string res = "aaa";
+        string res = "main->";
         for (int i = 0; i < MAX_CLIENT; ++i) {
           // cout << i << " ";
           switch (get_pool(i).status) {
@@ -269,7 +282,8 @@ int main() {
         threadpool[i] = new (thread)(server, i);
         get_pool(i).status = client_status::RUNNING;
       } else if (get_pool(i).status == client_status::DONE) {
-        cout << "delete!";
+        cout << "main->"
+             << "delete!" << endl;
         threadpool[i]->join();
         delete threadpool[i];
         threadpool[i] = NULL;
@@ -278,4 +292,5 @@ int main() {
     }
   }
   t.join();
+  delete sock;
 }
